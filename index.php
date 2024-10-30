@@ -44,11 +44,11 @@
                 <span>Ingrese con su correo y contraseña</span>
                 <div class="container-input">
                     <i class='bx bx-envelope'></i>
-                    <input type="text" placeholder="ingrese su correo electrónico">
+                    <input type="text" id="usu_correo" name="usu_correo" placeholder="ingrese su correo electrónico">
                 </div>
                 <div class="container-input">
                     <i class='bx bx-lock-alt'></i>
-                    <input type="password" placeholder="ingrese su contraseña">
+                    <input type="password" id="usu_pass" name="usu_pass" placeholder="ingrese su contraseña">
                 </div>
                 <a href="recuperar.php">Olvidaste tu contraseña?</a>
                 <input type="hidden" name="enviar" value="ok">
@@ -56,7 +56,7 @@
             </form>
         </div>
         <div class="container-form">
-            <form class="sign-up">
+            <form class="sign-up" id="usuario_form">
                 <input type="hidden" id="usu_rol" name="usu_rol" class="form-control" value="AS">
                 <h2>Registrarse</h2>
                 <span>Ingrese la información solicitada</span>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="container-input">
                     <i class='bx bx-user'></i>
-                    <input type="text" id="usu_pass" name="usu_pass" placeholder="ingrese sus Apellidos">
+                    <input type="text" id="usu_ape" name="usu_ape" placeholder="ingrese sus Apellidos">
                 </div>
                 <div class="container-input">
                     <i class='bx bx-envelope'></i>
@@ -93,5 +93,6 @@
         </div>
     </div>
     <script src="public/js/login.js"></script>
+    <script type="text/javascript" src="views/js/admUsuario.js"></script>
 </body>
 </html>

@@ -28,9 +28,9 @@
                         $_SESSION["usu_ape"]=$resultado["usu_ape"];
                         $_SESSION["usu_correo"]=$resultado["usu_correo"];
                         $_SESSION["usu_rol"]=$resultado["usu_rol"];
-                        $_SESSION["est"]=$resultado["est"];
+                        //$_SESSION["est"]=$resultado["est"];
                         
-                        if($usu_rol == "ES" || $usu_rol == "EX" || $usu_rol == "GC"){
+                        if($usu_rol == "ES" || $usu_rol == "EX" || $usu_rol == "GC" || $usu_rol == "AS"){
                             if($est == 0){
                                 header("Location:".Conectar::ruta()."views/perfil.php");
                                 exit();
@@ -118,17 +118,16 @@
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
-        public function insert_usuarios($usu_nom,$usu_ape,$usu_correo,$usu_pass,$usu_rol){
+        public function insert_usuarios($usu_nom,$usu_ape,$usu_correo,$usu_pass){
             $usuario=parent::Conexion();
             parent::set_names();
-            $sql="INSERT INTO usuario(usu_id,usu_nom,usu_ape,usu_correo,usu_pass,usu_rol,fech_crea,estado)
-                    VALUES(NULL,?,?,?,MD5(?),?,now(),1)";
+            $sql="INSERT INTO usuario(usu_id,usu_nom,usu_ape,usu_correo,usu_pass,fech_crea,estado)
+                    VALUES(NULL,?,?,?,MD5(?),now(),1)";
             $sql=$usuario->prepare($sql);
             $sql->bindValue(1,$usu_nom);
             $sql->bindValue(2,$usu_ape);
             $sql->bindValue(3,$usu_correo);
             $sql->bindValue(4,$usu_pass);
-            $sql->bindValue(5,$usu_rol);
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
