@@ -1,3 +1,12 @@
+<?php
+   require_once("config/conexion.php");
+   if(isset($_POST["enviar"]) and $_POST["enviar"] == "ok"){
+      require_once("models/Usuarios.php");
+      $usuario = new Usuario();
+      $usuario->login();
+      print_r($usuario);
+   }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +19,27 @@
 <body>
     <div class="container">
         <div class="container-form">
-            <form class="sign-in">
+            <form class="sign-in" method="POST">
+                <?php
+                if(isset($_GET["m"])){
+                    switch($_GET["m"]){
+                        case "1":
+                            ?>
+                            <div class="alert text-danger" role="alert">
+                            Los datos ingresados son incorrectos!
+                            </div>
+                            <?php
+                            break;
+                        case "2":
+                            ?>
+                            <div class="alert text-warning" role="alert">
+                            El formulario no puede estar vacio!
+                            </div>
+                            <?php
+                            break;
+                    }
+                }
+                ?>
                 <h2>Iniciar Sesión</h2>
                 <span>Ingrese con su correo y contraseña</span>
                 <div class="container-input">
@@ -21,31 +50,33 @@
                     <i class='bx bx-lock-alt'></i>
                     <input type="password" placeholder="ingrese su contraseña">
                 </div>
-                <a href="#">Olvidaste tu contraseña?</a>
-                <button class="btn">Iniciar Sesión</button>
+                <a href="recuperar.php">Olvidaste tu contraseña?</a>
+                <input type="hidden" name="enviar" value="ok">
+                <button type="submit" class="btn">Iniciar Sesión</button>
             </form>
         </div>
         <div class="container-form">
             <form class="sign-up">
+                <input type="hidden" id="usu_rol" name="usu_rol" class="form-control" value="AS">
                 <h2>Registrarse</h2>
                 <span>Ingrese la información solicitada</span>
                 <div class="container-input">
                     <i class='bx bx-user'></i>
-                    <input type="text" placeholder="ingrese sus Nombres">
+                    <input type="text" id="usu_nom" name="usu_nom" placeholder="ingrese sus Nombres">
                 </div>
                 <div class="container-input">
                     <i class='bx bx-user'></i>
-                    <input type="text" placeholder="ingrese sus Apellidos">
+                    <input type="text" id="usu_pass" name="usu_pass" placeholder="ingrese sus Apellidos">
                 </div>
                 <div class="container-input">
                     <i class='bx bx-envelope'></i>
-                    <input type="email" placeholder="ingrese su correo electrónico">
+                    <input type="email" id="usu_correo" name="usu_correo" placeholder="ingrese su correo electrónico">
                 </div>
                 <div class="container-input">
                     <i class='bx bx-lock-alt'></i>
-                    <input type="password" placeholder="ingrese su contraseña">
+                    <input type="password" id="usu_pass" name="usu_pass" placeholder="ingrese su contraseña">
                 </div>
-                <button class="btn">Registrarse</button>
+                <button type="submit" name="action" value="add" class="btn">Registrarse</button>
             </form>
         </div>
         <div class="container-welcome">

@@ -4,16 +4,17 @@
             $conectar = parent::Conexion();
             parent::set_names();
             if(isset($_POST["enviar"])){
-                $usu_correo = $_POST["correo"];
-                $usu_pass = $_POST["passwd"];
+                $usu_correo = $_POST["usu_correo"];
+                $usu_pass = $_POST["usu_pass"];
                 $usu_rol = $_POST["usu_rol"];
+                $est = 0;
 
                 if(empty($usu_correo) and empty($usu_pass)){
                     header("Location:".Conectar::ruta()."index.php?m=2");
                     exit();
                 }else{
                     
-                    $sql = "SELECT * FROM usuario WHERE usu_correo=? and usu_pass=MD5(?) and usu_rol=? and est=1";
+                    $sql = "SELECT * FROM usuarios WHERE usu_correo=? and usu_pass=MD5(?) and usu_rol=? and est=1";
                     $stmt = $conectar->prepare($sql);
                     $stmt->bindValue(1,$usu_correo);
                     $stmt->bindValue(2,$usu_pass);
@@ -27,11 +28,18 @@
                         $_SESSION["usu_ape"]=$resultado["usu_ape"];
                         $_SESSION["usu_correo"]=$resultado["usu_correo"];
                         $_SESSION["usu_rol"]=$resultado["usu_rol"];
-                        if($usu_rol == "C" || $usu_rol == "GM"){
-                            header("Location:".Conectar::ruta()."views/home.php");
-                            exit();
+                        $_SESSION["est"]=$resultado["est"];
+                        
+                        if($usu_rol == "ES" || $usu_rol == "EX" || $usu_rol == "GC"){
+                            if($est == 0){
+                                header("Location:".Conectar::ruta()."views/perfil.php");
+                                exit();
+                            }else{
+                                header("Location:".Conectar::ruta()."views/postulacion.php");
+                                exit();
+                            }
                         }else{
-                            header("Location:".Conectar::ruta()."views/remision.php");
+                            header("Location:".Conectar::ruta()."views/home.php");
                             exit();
                         }
                         

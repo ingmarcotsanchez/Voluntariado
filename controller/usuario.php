@@ -42,10 +42,14 @@
                 $sub_array[] = $row["usu_correo"];
                 if($row["usu_rol"] == 'C'){
                     $sub_array[] = '<strong class="text-primary">Coordinador</strong>';
-                }elseif($row["usu_rol"] == 'GM'){
-                    $sub_array[] = '<strong class="text-primary">Gestor MAIE</strong>';
+                }elseif($row["usu_rol"] == 'ES'){
+                    $sub_array[] = '<strong class="text-primary">Estudiante</strong>';
+                }elseif($row["usu_rol"] == 'GC'){
+                    $sub_array[] = '<strong class="text-primary">Gestor Conocimiento</strong>';
+                }elseif($row["usu_rol"] == 'EX'){
+                    $sub_array[] = '<strong class="text-primary">Externo</strong>';
                 }else{
-                    $sub_array[] = '<strong class="text-primary">Invitador</strong>';
+                    $sub_array[] = '<strong class="text-primary">Aspirante</strong>';
                 }
                 if($row["est"] == '1'){
                     $sub_array[] = "<button type='button' onClick='est_ina(".$row["usu_id"].");' class='btn btn-success btn-sm'>Activo</button>";
@@ -71,15 +75,4 @@
         case "inactivo":
             $usuarios->update_estadoInactivo($_POST["usu_id"]);
             break; 
-        case "total_Programas":
-            $datos=$usuarios->total_programas();
-            if(is_array($datos)==true and count($datos)>0){
-                foreach($datos as $row)
-                {
-                    $output["total"] = $row["total"];
-                }
-                echo json_encode($output);
-            }
-            break;
-        
     }

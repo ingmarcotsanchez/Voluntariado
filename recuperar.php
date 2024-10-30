@@ -20,27 +20,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ADMON | RESET</title>
-  <link rel="icon" href="/ISUM/public/favicon.png">
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="html/plugins/fontawesome-free/css/all.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="html/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="html/dist/css/adminlte.min.css">
+  <title>UDEC-Voluntariado</title>
+    <link rel="stylesheet" href="public/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body class="hold-transition login-page">
-<div class="login-box">
+<div class="container">
   <!-- /.login-logo -->
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="index.php" class="h1"><b>ADMINISTRACION</b></a>
-    </div>
-    <div class="card-body">
+  <div class="container-form">
       <form method="post">
-      
+        <h2>Recuperar su Contraseña</h2>
+        <span>Ingrese el correo electrónico registrado para adquirir una nueva contraseña</span>
+    
         <?php
           if(isset($_GET["m"])){
             switch($_GET["m"]){
@@ -70,25 +61,14 @@
             }
           }
         ?>
-        <div class="input-group mb-3">
-          <input type="email" name="correo" id="correo" class="form-control" placeholder="Email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
+        <div class="container-input">
+            <i class='bx bx-envelope'></i>
+            <input type="text" placeholder="ingrese su correo electrónico">
         </div>
-        <div class="row">
-          <div class="col-12">
-            <input type="hidden" name="enviar" class="form-control" value="si">
-            <button type="submit" class="btn btn-primary btn-block miBtn" id="btnRecuperar">Recuperar clave</button>
-          </div>
-        </div>
+        <input type="hidden" name="enviar" class="form-control" value="si">
+        <button type="submit" class="btn btn-primary btn-block miBtn" id="btnRecuperar">Recuperar clave</button>
+        <a href="index.php" style="color: #fff;">Ingresar al sistema</a>
       </form>
-      <p class="mt-3 mb-1">
-        <a href="index.php">Ingresar</a>
-      </p>
-    </div>
     <!-- /.card-body -->
   </div>
   <!-- /.card -->
