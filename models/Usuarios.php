@@ -31,13 +31,13 @@
                         //$_SESSION["est"]=$resultado["est"];
                         
                         if($usu_rol == "ES" || $usu_rol == "EX" || $usu_rol == "GC" || $usu_rol == "AS"){
-                            if($est == 0){
+                            //if($est == 0){
                                 header("Location:".Conectar::ruta()."views/perfil.php");
                                 exit();
-                            }else{
-                                header("Location:".Conectar::ruta()."views/postulacion.php");
+                            //}else{
+                            /*     header("Location:".Conectar::ruta()."views/postulacion.php");
                                 exit();
-                            }
+                            } */
                         }else{
                             header("Location:".Conectar::ruta()."views/home.php");
                             exit();
@@ -118,6 +118,16 @@
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
+        public function get_correo($usu_correo) {
+            $conectar = parent::conexion();
+            parent::set_names();
+            $sql="select * from usuarios where usu_correo=?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $usu_correo);
+            $sql->execute();
+            return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+        
         public function insert_usuarios($usu_nom,$usu_ape,$usu_correo,$usu_pass){
             $usuario=parent::Conexion();
             parent::set_names();

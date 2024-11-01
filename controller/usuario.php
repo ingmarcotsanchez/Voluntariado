@@ -2,6 +2,8 @@
     require_once("../config/conexion.php");
     require_once("../models/Usuarios.php");
     $usuarios = new Usuario();
+    /* require_once("../models/Email.php");
+    $email = new Email(); */
 
     switch($_GET["opc"]){
         case "guardaryeditar":
@@ -12,8 +14,19 @@
             }
             break;
         case "crear":
-            $usuarios->insert_usuarios($_POST["usu_nom"],$_POST["usu_ape"],$_POST["usu_correo"],$_POST["usu_pass"],$_POST["usu_rol"]);
+            $datos = $usuarios->get_correo($_POST["usu_correo"]);
+            if(is_array($datos)==true and count($datos)==0){
+                $usuarios->insert_usuarios($_POST["usu_nom"],$_POST["usu_ape"],$_POST["usu_correo"],$_POST["usu_pass"],"AS");
+                echo 1;
+            }else{
+                echo 2;
+            }
             break;
+            /* $usuarios->insert_usuarios($_POST["usu_nom"],$_POST["usu_ape"],$_POST["usu_correo"],$_POST["usu_pass"],"AS");
+            break; */
+        /* case "emailBienvenida":
+            $email->email_bienvenida($_POST["usu_correo"]);
+            break; */
         case "mostrar":
             $datos=$usuarios->get_usuariosXid($_POST["usu_id"]);
             if(is_array($datos) == true and count($datos)<>0){

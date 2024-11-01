@@ -20,6 +20,7 @@
     <div class="container">
         <div class="container-form">
             <form class="sign-in" method="POST">
+            
                 <?php
                 if(isset($_GET["m"])){
                     switch($_GET["m"]){
@@ -50,6 +51,17 @@
                     <i class='bx bx-lock-alt'></i>
                     <input type="password" id="usu_pass" name="usu_pass" placeholder="ingrese su contraseña">
                 </div>
+                <div class="container-input">
+                    <i class='bx bx-user'></i>
+                    <select class="custom-select rounded-0" id="usu_rol" name="usu_rol">
+                        <option>Seleccione...</option>
+                        <option value="C">Coordinador</option>
+                        <option value="ES">Estudiante</option>
+                        <option value="GC">Gestor Conocimiento</option>
+                        <option value="EX">Sector Externo</option>
+                        <option value="AS">Aspirante</option>
+                    </select>
+                </div>
                 <a href="recuperar.php">Olvidaste tu contraseña?</a>
                 <input type="hidden" name="enviar" value="ok">
                 <button type="submit" class="btn">Iniciar Sesión</button>
@@ -76,7 +88,7 @@
                     <i class='bx bx-lock-alt'></i>
                     <input type="password" id="usu_pass" name="usu_pass" placeholder="ingrese su contraseña">
                 </div>
-                <button type="submit" name="action" value="add" class="btn">Registrarse</button>
+                <button type="submit" name="action" id="#" value="add" class="btn">Registrarse</button>
             </form>
         </div>
         <div class="container-welcome">
@@ -93,6 +105,7 @@
         </div>
     </div>
     <script src="public/js/login.js"></script>
-    <script type="text/javascript" src="views/js/admUsuario.js"></script>
+    <script type="text/javascript" src="public/js/index.js"></script>
+   <!--  <script type="text/javascript" src="views/js/admUsuario.js"></script> -->
 </body>
 </html>
