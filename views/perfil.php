@@ -1,6 +1,6 @@
 <?php 
   $titulo="Perfil del Usuario";
-  define("URL","/MAIE/views/");
+  define("URL","/Voluntariado/views/");
   require_once("../config/conexion.php");
   if(isset($_SESSION["usu_id"])){
 ?>
@@ -17,7 +17,7 @@
   <?php require_once("modulos/header.php");?>
   <aside class="main-sidebar sidebar-light-primary elevation-4">
     <a href="#" class="brand-link">
-      <img src="../public/img/logo.png" alt="Logo UMD" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="../public/img/logo.png" alt="Logo UDEC" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Voluntariado</span>
     </a>
     <div class="sidebar">
@@ -78,11 +78,11 @@
                       <label for="usu_rol">Rol</label>
                       <select class="form-control select2" name="usu_rol" id="usu_rol" data-placeholder="Seleccione" disabled>
                           <option label="Seleccione"></option>
-                          <option value="C">Coordinador</option>
-                          <option value="GA">Gestor Académico o Docente de Apoyo</option>
-                          <option value="GI">Gestor de Investigación</option>
-                          <option value="AU">Gestor Autoevaluación</option>
-                          <option value="E">Estudiante</option>
+                          <option value="C">Administrador</option>
+                          <option value="GC">Gestor Conocimiento</option>
+                          <option value="ES">Estudiante</option>
+                          <option value="EX">Sector Externo</option>
+                          <option value="AS">Aspirante</option>
                       </select>
                       
                   </div>

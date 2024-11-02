@@ -44,7 +44,10 @@
                                 <select class="form-control select2" name="usu_rol" id="usu_rol" data-placeholder="Seleccione">
                                     <option label="Seleccione"></option>
                                     <option value="C">Coordinador</option>
-                                    <option value="GM">Gestor de MAIE</option>
+                                    <option value="GC">Gestor Conocimiento</option>
+                                    <option value="ES">Estudiante</option>
+                                    <option value="EX">Sector Externo</option>
+                                    <option value="AS">Aspirante</option>
                                 </select>
                             </div>
                         </div>
