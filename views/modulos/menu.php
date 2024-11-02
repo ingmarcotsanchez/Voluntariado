@@ -15,12 +15,14 @@
         </a>
     </li>
     <?php endif; ?>
+    <?php if($_SESSION["usu_rol"] == "C" OR $_SESSION["usu_rol"] == "GC" OR $_SESSION["usu_rol"] == "ES" OR $_SESSION["usu_rol"] == "EX" OR $_SESSION["usu_rol"] == "AS"):?>
     <li class="nav-item">
         <a href="perfil.php" class="nav-link">
             <i class="nav-icon fas fa-user"></i>
             <p>Perfil</p>
         </a>
     </li>
+    <?php endif; ?>
     <?php //if($_SESSION["usu_rol"] == "C"):?>
         <!-- <li class="nav-item">
             <a href="manualADM.php" class="nav-link">
