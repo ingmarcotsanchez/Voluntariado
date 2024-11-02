@@ -9,7 +9,7 @@ if(isset($_SESSION["usu_id"])){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Software Saber Pro</title>
+    <title>Voluntariado</title>
     <?php require_once("modulos/head.php"); ?>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -19,7 +19,7 @@ if(isset($_SESSION["usu_id"])){
   <aside class="main-sidebar sidebar-light-primary elevation-4">
     <a href="#" class="brand-link">
       <img src="../public/img/logo.png" alt="Logo UMD" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">SaberPro</span>
+      <span class="brand-text font-weight-light">Voluntariado</span>
     </a>
     <div class="sidebar">
       <input type="hidden" id="usu_idx" value="<?php echo $_SESSION["usu_id"]; ?>">
