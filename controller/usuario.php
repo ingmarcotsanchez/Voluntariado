@@ -81,7 +81,9 @@
             );
             echo json_encode($results);
             break;
-        
+        case "guardar_desde_excel":
+            $usuarios->insert_usuarios($_POST["usu_nom"],$_POST["usu_ape"],$_POST["usu_correo"],$_POST["usu_pass"],$_POST["usu_rol"]);
+            break;
         case "activo":
             $usuarios->update_estadoActivo($_POST["usu_id"]);
             break;

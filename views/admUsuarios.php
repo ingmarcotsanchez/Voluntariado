@@ -57,6 +57,7 @@ if(isset($_SESSION["usu_id"])){
                 </div>
                 <div class="card-body">
                     <button type="button" class="btn btn-outline-primary mb-2" onclick="nuevo()">Crear Usuarios</button>
+                    <button type="button" class="btn btn-outline-secondary mb-2" id="btnplantilla">Cargar Planilla</button>
                     <table id="usuario_data" class="table display responsive nowrap">
                         <thead>
                             <tr>
@@ -82,8 +83,11 @@ if(isset($_SESSION["usu_id"])){
     
     <!-- /.Site warapper -->
     <?php require_once("admUsuarioModal.php"); ?>
+    <?php require_once("admUsuarioPlantilla.php"); ?>
     <?php include("modulos/js.php"); ?>
     <script type="text/javascript" src="js/admUsuario.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
 </body>
 </html>
 <?php

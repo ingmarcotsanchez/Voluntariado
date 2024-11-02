@@ -96,37 +96,7 @@
           <?php endif; ?>
           <div class="clearfix hidden-md-up"></div>
         </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-header border-0">
-                <h3 class="card-title text-bold text-green">Resultado Global</h3>
-              </div>
-              <div class="card-body table-responsive p-4">
-              <div class="card card-light">
-              <div class="card-header">
-                <h3 class="card-title">Resultados Globales</h3>
-              </div>
-              <div class="card-body">
-                <div class="chart" id="barChart">
-                  <!-- <?php if($prog_id != 0 ): ?>
-                    <?php for($i=0;$i<sizeof($res);$i++): ?>
-                      <div id="chart_div"></div>
-                    <?php endfor; ?>
-                  <?php else: ?>
-                    <?php for($i=0;$i<sizeof($res2);$i++): ?>
-                      <div id="chart_div"></div>
-                    <?php endfor; ?>
-                  <?php endif; ?> -->
-                  <!-- <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas> -->
-                </div>
-              </div>
-              <!-- /.card-body -->
-            </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </section>
     
@@ -135,67 +105,7 @@
 </div>
 <?php require_once("modulos/js.php");?>
 <script src="../public/js/home.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-<script>
-  google.charts.load('current', {packages: ['corechart', 'bar']});
-  google.charts.setOnLoadCallback(drawAnnotations);
-
-  function drawAnnotations() {
-    var data = [
-        ['Programa', 'Desviación Estandar', {type: 'string', role: 'annotation'}, 'Puntaje', {type: 'string', role: 'annotation'}]
-    ];
-
-    <?php foreach($res as $row): ?>
-        var puntaje_programa = <?php echo $row["puntaje_programa"]; ?>;
-        var puntaje_referencia = <?php echo $row["puntaje_referencia"]; ?>;
-        var desviacion_programa = <?php echo $row["desviacion_programa"]; ?>;
-        var desviacion_referencia = <?php echo $row["desviacion_referencia"]; ?>;
-        var anio = <?php echo $row["anno"]; ?>;
-
-        data.push(['Grupo de Referencia', desviacion_programa, 'Desviación Programa', desviacion_referencia, 'Desviación Referencia']);
-        data.push(['Programa', puntaje_programa, 'Puntaje Programa', puntaje_referencia, 'Puntaje Referencia']);
-    <?php endforeach; ?>
-
-    // Convert the data array into a DataTable
-    var dataTable = google.visualization.arrayToDataTable(data);
-
-    var anno = anio;
-    var options = {
-        title: 'Resultado Global del programa',
-        chartArea: { width: '50%' },
-        annotations: {
-            alwaysOutside: true,
-            textStyle: {
-                fontSize: 8,
-                auraColor: 'none',
-                color: '#555'
-            },
-            boxStyle: {
-                stroke: '#ccc',
-                strokeWidth: 1,
-                gradient: {
-                    color1: '#f3e5f5',
-                    color2: '#f3e5f5',
-                    x1: '0%', y1: '0%',
-                    x2: '100%', y2: '100%'
-                }
-            }
-        },
-        hAxis: {
-            title: 'Puntaje',
-            minValue: 0,
-        },
-        vAxis: {
-            title: anno
-        }
-    };
-
-    var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-    chart.draw(dataTable, options);
-  }
-    
-</script>
 
 </body>
 </html>
