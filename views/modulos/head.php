@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="../public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet" href="../public/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 <!-- Select2 -->
-<link rel="stylesheet" href="/Maie/public/plugins/select2/css/select2.min.css">
-<link rel="stylesheet" href="/Maie/public/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<link rel="stylesheet" href="/Voluntariado/public/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="/Voluntariado/public/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 <!-- Sumernote -->
-<link href="/Maie/public/plugins/summernote/summernote-bs4.min.css" rel="stylesheet">
+<link href="/Voluntariado/public/plugins/summernote/summernote-bs4.min.css" rel="stylesheet">

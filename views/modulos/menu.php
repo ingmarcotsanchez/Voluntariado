@@ -37,7 +37,7 @@
         </li>
     <?php endif; ?>
     <?php if($_SESSION["usu_rol"] == "C"):?>
-    <li class="nav-header text-orange">PARAMETRIZACIÓN</li>
+    <li class="nav-header text-green">PARAMETRIZACIÓN</li>
     <li class="nav-item">
         <a href="admCentros.php" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
@@ -90,7 +90,7 @@
 
     <?php endif; ?>
     <?php if($_SESSION["usu_rol"] == "C" OR $_SESSION["usu_rol"] == "GM"):?>
-    <li class="nav-header text-orange">EJECUCIÓN</li>
+    <li class="nav-header text-green">EJECUCIÓN</li>
     <li class="nav-item">
         <a href="admPostulaciones.php" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
@@ -104,7 +104,7 @@
         </a>
     </li>
     <?php endif; ?>
-    <li class="nav-header text-orange">SALIR</li>
+    <li class="nav-header text-green">SALIR</li>
     <li class="nav-item">
         <a href="logout.php" class="nav-link">
             <i class="nav-icon fas fa-sign-out-alt"></i>

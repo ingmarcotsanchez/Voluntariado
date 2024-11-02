@@ -45683,6 +45683,7 @@ blockquote.quote-gray-dark h6 {
 
 .text-green {
   color: #28a745 !important;
+  font-weight: 600;
 }
 
 .text-teal {
