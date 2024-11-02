@@ -54,7 +54,7 @@
                 $sub_array[] = $row["usu_nom"]." ".$row["usu_ape"] ;
                 $sub_array[] = $row["usu_correo"];
                 if($row["usu_rol"] == 'C'){
-                    $sub_array[] = '<strong class="text-primary">Coordinador</strong>';
+                    $sub_array[] = '<strong class="text-primary">Administrador</strong>';
                 }elseif($row["usu_rol"] == 'ES'){
                     $sub_array[] = '<strong class="text-primary">Estudiante</strong>';
                 }elseif($row["usu_rol"] == 'GC'){

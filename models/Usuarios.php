@@ -62,7 +62,7 @@
                     header("Location:".Conectar::ruta()."recuperar.php?m=3");
                     exit();
                 }elseif(!empty($usuario)){
-                    $sql = "SELECT usu_correo FROM usuario WHERE usu_correo=?";
+                    $sql = "SELECT usu_correo FROM usuarios WHERE usu_correo=?";
                     $stmt = $conectar->prepare($sql);
                     $stmt->bindValue(1,$usuario);
                     $stmt->execute();
@@ -96,14 +96,14 @@
             parent::set_names();
             //$sql="SELECT * FROM usuarios";
             $sql = "SELECT 
-                            usuario.usu_id,
-                            usuario.usu_nom,
-                            usuario.usu_ape,
-                            usuario.usu_correo,
-                            usuario.usu_rol,
-                            usuario.usu_pass,
-                            usuario.est 
-                            FROM usuario 
+                            usuarios.usu_id,
+                            usuarios.usu_nom,
+                            usuarios.usu_ape,
+                            usuarios.usu_correo,
+                            usuarios.usu_rol,
+                            usuarios.usu_pass,
+                            usuarios.est 
+                            FROM usuarios 
                             ";
             $sql=$usuario->prepare($sql);
             $sql->execute();
@@ -112,7 +112,7 @@
         public function get_usuariosXid($usu_id){
             $usuario=parent::Conexion();
             parent::set_names();
-            $sql="SELECT * FROM usuario WHERE usu_id=?";
+            $sql="SELECT * FROM usuarios WHERE usu_id=?";
             $sql=$usuario->prepare($sql);
             $sql->bindValue(1,$usu_id);
             $sql->execute();
@@ -131,7 +131,7 @@
         public function insert_usuarios($usu_nom,$usu_ape,$usu_correo,$usu_pass){
             $usuario=parent::Conexion();
             parent::set_names();
-            $sql="INSERT INTO usuario(usu_id,usu_nom,usu_ape,usu_correo,usu_pass,fech_crea,estado)
+            $sql="INSERT INTO usuarios(usu_id,usu_nom,usu_ape,usu_correo,usu_pass,fech_crea,estado)
                     VALUES(NULL,?,?,?,MD5(?),now(),1)";
             $sql=$usuario->prepare($sql);
             $sql->bindValue(1,$usu_nom);
@@ -144,7 +144,7 @@
         public function update_perfil($usu_id,$usu_pass){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "UPDATE usuario
+            $sql = "UPDATE usuarios
                     SET 
                     usu_pass = MD5(?)
                     WHERE usu_id = ?";
@@ -157,7 +157,7 @@
         public function update_usuarios($usu_id,$usu_nom,$usu_ape,$usu_correo,$usu_pass,$usu_rol){
             $usuario=parent::Conexion();
             parent::set_names();
-            $sql="UPDATE usuario
+            $sql="UPDATE usuarios
                     SET usu_nom=?,
                         usu_ape=?,
                         usu_correo=?,
@@ -179,7 +179,7 @@
         public function delete_usuarios($usu_id){
             $usuario=parent::Conexion();
             parent::set_names();
-            $sql="UPDATE usuario SET est=0 WHERE usu_id=?";
+            $sql="UPDATE usuarios SET est=0 WHERE usu_id=?";
             $sql=$usuario->prepare($sql);
             $sql->bindValue(1,$usu_id);
             $sql->execute();
@@ -188,7 +188,7 @@
         public function update_estadoActivo($usu_id){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "UPDATE usuario SET est=1 WHERE usu_id = ?";
+            $sql = "UPDATE usuarios SET est=1 WHERE usu_id = ?";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$usu_id);
             $sql->execute();
@@ -197,7 +197,7 @@
         public function update_estadoInactivo($usu_id){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "UPDATE usuario SET est=0 WHERE usu_id = ?";
+            $sql = "UPDATE usuarios SET est=0 WHERE usu_id = ?";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$usu_id);
             $sql->execute();
@@ -207,7 +207,7 @@
          public function usuario_correo($cedula){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "SELECT usu_correo, usu_pass FROM usuario WHERE est = 1 AND usu_correo=?";
+            $sql = "SELECT usu_correo, usu_pass FROM usuarios WHERE est = 1 AND usu_correo=?";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$cedula);
             $sql->execute();
