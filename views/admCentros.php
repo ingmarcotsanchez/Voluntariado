@@ -1,5 +1,5 @@
 <?php
-$titulo="Centros Educativos";
+$titulo="Sede/Seccional/Extensión";
 define("URL","/Voluntariado/views/");
 require_once("../config/conexion.php");
 if(isset($_SESSION["usu_id"])){
@@ -51,7 +51,7 @@ if(isset($_SESSION["usu_id"])){
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Admón Centros educativos</h3>
+                    <h3 class="card-title">Admón Sede/Seccional/Extensión</h3>
                 </div>
                 <div class="card-body">
                     <button type="button" class="btn btn-outline-primary mb-2" onclick="nuevo()">Crear</button>
@@ -59,7 +59,7 @@ if(isset($_SESSION["usu_id"])){
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nombre del Centro Educativo</th>
+                                <th>Nombre de la Sede/Seccional/Extensión</th>
                                 <th>Estado</th>
                                 <th></th>
                                 <th></th>

@@ -26,7 +26,7 @@ function guardaryeditar(e){
 
             Swal.fire({
                 title: 'Correcto!',
-                text: 'Se Registro de forma correcta el centro educativo',
+                text: 'Se Registro de forma correcta la Sede/Seccional/Extensión',
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             })
@@ -81,7 +81,7 @@ $(document).ready(function(){
 });
 
 function nuevo(){
-    $('#titulo_modal').html('Nuevo centro educativo');
+    $('#titulo_modal').html('Nueva Sede/Seccional/Extensión');
     $('#centro_form')[0].reset();
     $('#modalcrearCentro').modal('show');
 }
@@ -93,14 +93,14 @@ function editar(cen_id){
         $('#cen_id').val(data.cen_id);
         $('#cen_nom').val(data.cen_nom);
     });
-    $('#titulo_modal').html('Editar centro educativo');
+    $('#titulo_modal').html('Editar Sede/Seccional/Extensión');
     $('#modalcrearCentro').modal('show');
 }
 
 function eliminar(cen_id){
     Swal.fire({
         title: 'Eliminar!',
-        text: 'Desea eleminar el Centro educativo?',
+        text: 'Desea eleminar la Sede/Seccional/Extensión?',
         icon: 'error',
         showCancelButton: true,
         confirmButtonText: 'Aceptar',
