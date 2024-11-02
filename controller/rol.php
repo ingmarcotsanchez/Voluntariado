@@ -25,12 +25,17 @@
                 $rol->delete_rol($_POST["rol_id"]);
                 break;
         case "listar":
-                $datos=$rol->roles();
+                $datos=$rol->roles_all();
                 $data=Array();
                 foreach($datos as $row){
                     $sub_array = array();
                     //columnas de las tablas a mostrar segun select del modelo
                     $sub_array[] = $row["rol_nombre"];
+                    if($row["est"] == '1'){
+                        $sub_array[] = "<button type='button' onClick='est_ina(".$row["rol_id"].");' class='btn btn-success btn-sm'>Activo</button>";
+                    }else{
+                        $sub_array[] = "<button type='button' onClick='est_act(".$row["rol_id"].");' class='btn btn-danger btn-sm'>Inactivo</button>";
+                    }
                     $sub_array[] = '<button type="button" onClick="editar('.$row["rol_id"].');"  id="'.$row["rol_id"].'" class="btn btn-outline-warning btn-sm ladda-button"><i class="fa fa-edit"></i></button>';
                     $sub_array[] = '<button type="button" onClick="eliminar('.$row["rol_id"].');"  id="'.$row["rol_id"].'" class="btn btn-outline-danger btn-sm ladda-button"><i class="fa fa-trash"></i></button>';
                     
@@ -54,6 +59,12 @@
                     echo $html;
                 }
                 break;
+        case "activo":
+            $rol->update_estadoActivo($_POST["rol_id"]);
+            break;
+        case "inactivo":
+            $rol->update_estadoInactivo($_POST["rol_id"]);
+            break; 
             
      
     }

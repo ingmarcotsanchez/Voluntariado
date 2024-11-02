@@ -120,5 +120,18 @@ function eliminar(rol_id){
     });
 
 }
+function est_act(rol_id){
+    $.post("/Voluntariado/controller/rol.php?opc=activo",{rol_id:rol_id},function (data){
+        $('#rol_data').DataTable().ajax.reload();
+       // data = JSON.parse(data);
+    });
+}
+
+function est_ina(rol_id){
+    $.post("/Voluntariado/controller/rol.php?opc=inactivo",{rol_id:rol_id},function (data){
+        $('#rol_data').DataTable().ajax.reload();
+    });
+}
+
 
 init();
