@@ -69,8 +69,8 @@
                 }else{
                     $sub_array[] = "<button type='button' onClick='est_act(".$row["usu_id"].");' class='btn btn-danger btn-sm'>Inactivo</button>";
                 }
-                $sub_array[] = '<button type="button" class="btn btn-outline-warning btn-icon" onClick="editar('.$row["usu_id"].')" id="'.$row["usu_id"].'"><div><i class="fa fa-edit"></i></div></button>';
-                $sub_array[] = '<button type="button" class="btn btn-outline-danger btn-icon" onClick="eliminar('.$row["usu_id"].')" id="'.$row["usu_id"].'"><div><i class="fa fa-minus"></i></div></button>';
+                $sub_array[] = '<button type="button" class="btn btn-outline-warning btn-icon btn-sm" onClick="editar('.$row["usu_id"].')" id="'.$row["usu_id"].'"><div><i class="fa fa-edit"></i></div></button>';
+                $sub_array[] = '<button type="button" class="btn btn-outline-danger btn-icon btn-sm" onClick="eliminar('.$row["usu_id"].')" id="'.$row["usu_id"].'"><div><i class="fa fa-trash"></i></div></button>';
                 $data[] = $sub_array;
             }
             $results = array(
