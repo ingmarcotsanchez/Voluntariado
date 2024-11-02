@@ -2,8 +2,8 @@
   $titulo="Información General";
   date_default_timezone_set('America/Bogota');
   $fecha_actual = date("d-m-Y");
-  define("URL","/MAIE/views/");
-  define("BASE_PATH","/MAIE");
+  define("URL","/Voluntariado/views/");
+  define("BASE_PATH","/Voluntariado");
   require_once("../config/conexion.php");
   require_once("../models/Usuarios.php");
   /* $usuario = new Usuario(); */
@@ -17,7 +17,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gestión MAIE</title>
+  <title>Gestión Voluntariado</title>
   <?php require_once("modulos/head.php"); ?>
   <link rel="stylesheet" href="../public/plugins/chart.js/Chart.min.css">
 </head>
@@ -27,7 +27,7 @@
   <aside class="main-sidebar sidebar-light-primary elevation-4">
     <a href="#" class="brand-link">
       <img src="../public/img/logo.png" alt="Logo UMD" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">MAIE</span>
+      <span class="brand-text font-weight-light">Voluntariado</span>
     </a>
     <div class="sidebar">
       
@@ -70,7 +70,7 @@
             </div>
           </div>
           <?php if($_SESSION["usu_rol"] == "C"): ?>
-            <div class="col-12 col-sm-6 col-md-3">
+            <!-- <div class="col-12 col-sm-6 col-md-3">
               <div class="info-box">
                 <span class="info-box-icon bg-primary elevation-1"><i class="fa fa-graduation-cap"></i></span>
                 <div class="info-box-content">
@@ -80,12 +80,12 @@
                   </span>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="col-12 col-sm-6 col-md-3">
               <div class="info-box">
                 <span class="info-box-icon bg-primary elevation-1"><i class="fa fa-user"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text">Remisiones</span>
+                  <span class="info-box-text">Solicitudes</span>
                   <span class="info-box-number">
                     <span id="lbltotalRemisiones"></span>
                   </span>

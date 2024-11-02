@@ -45,27 +45,15 @@
         </a>
     </li>
     <li class="nav-item">
+        <a href="admFacultades.php" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>Facultades</p>
+        </a>
+    </li>
+    <li class="nav-item">
         <a href="admProgramas.php" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
             <p>Programas</p>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a href="admSemestres.php" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>Semestres</p>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a href="admAsignaturas.php" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>Asignaturas</p>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a href="admEscalafones.php" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>Escalafón</p>
         </a>
     </li>
     <li class="nav-item">
@@ -99,32 +87,20 @@
         </a>
     </li>
     
-    
-    <li class="nav-item">
-        <a href="admEstudiantes.php" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>Estudiantes</p>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a href="admProfesores.php" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>Profesores</p>
-        </a>
-    </li>
+
     <?php endif; ?>
     <?php if($_SESSION["usu_rol"] == "C" OR $_SESSION["usu_rol"] == "GM"):?>
     <li class="nav-header text-orange">EJECUCIÓN</li>
     <li class="nav-item">
-        <a href="admRemisiones.php" class="nav-link">
+        <a href="admPostulaciones.php" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
-            <p>Remisiones</p>
+            <p>Postulaciones</p>
         </a>
     </li>
     <li class="nav-item">
-        <a href="admSeguimientos.php" class="nav-link">
+        <a href="admAutoevaluacion.php" class="nav-link">
             <i class="nav-icon fas fa-file"></i>
-            <p>Seguimientos</p>
+            <p>Autoevaluación</p>
         </a>
     </li>
     <?php endif; ?>
