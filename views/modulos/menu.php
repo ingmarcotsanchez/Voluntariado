@@ -41,7 +41,7 @@
     <li class="nav-item">
         <a href="admCentros.php" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
-            <p>Centros</p>
+            <p>Sedes</p>
         </a>
     </li>
     <li class="nav-item">
@@ -63,18 +63,24 @@
         </a>
     </li>
     <li class="nav-item">
+        <a href="admRoles.php" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>Roles</p>
+        </a>
+    </li>
+    <!-- <li class="nav-item">
         <a href="admJornada.php" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
             <p>Jornadas</p>
         </a>
-    </li>
+    </li> -->
     <li class="nav-item">
         <a href="admModalidad.php" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
             <p>Modalidad</p>
         </a>
     </li>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a href="admTipos.php" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
             <p>Tipo Acompañamiento</p>
@@ -85,7 +91,7 @@
             <i class="nav-icon fas fa-copy"></i>
             <p>Necesidades</p>
         </a>
-    </li>
+    </li> -->
     
 
     <?php endif; ?>

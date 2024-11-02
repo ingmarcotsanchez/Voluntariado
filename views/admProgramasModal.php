@@ -14,7 +14,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="cen_id">Centro</label>
+                                <label for="cen_id">Sedes</label>
                                 <select class="form-control select2" style="width:100%" name="cen_id" id="cen_id" data-placeholder="Seleccione">
                                 
                                     <option label="Seleccione"></option>
