@@ -21,21 +21,21 @@
             <p>Perfil</p>
         </a>
     </li>
-    <?php if($_SESSION["usu_rol"] == "C"):?>
-        <li class="nav-item">
+    <?php //if($_SESSION["usu_rol"] == "C"):?>
+        <!-- <li class="nav-item">
             <a href="manualADM.php" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>Manual</p>
             </a>
-        </li>
-    <?php else: ?>
-        <li class="nav-item">
+        </li> -->
+    <?php //else: ?>
+        <!-- <li class="nav-item">
             <a href="manualPROF.php" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>Manual</p>
             </a>
-        </li>
-    <?php endif; ?>
+        </li> -->
+    <?php //endif; ?>
     <?php if($_SESSION["usu_rol"] == "C"):?>
     <li class="nav-header text-green">PARAMETRIZACIÓN</li>
     <li class="nav-item">
@@ -57,9 +57,9 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="admRoles.php" class="nav-link">
+        <a href="admAreas.php" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
-            <p>Roles</p>
+            <p>Áreas</p>
         </a>
     </li>
     <li class="nav-item">

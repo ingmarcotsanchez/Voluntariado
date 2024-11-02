@@ -1,5 +1,5 @@
 <?php
-$titulo="Centros Educativos";
+$titulo="Áreas de Actividades";
 define("URL","/Voluntariado/views/");
 require_once("../config/conexion.php");
 if(isset($_SESSION["usu_id"])){
@@ -51,15 +51,15 @@ if(isset($_SESSION["usu_id"])){
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Admón Centros educativos</h3>
+                    <h3 class="card-title">Admón Áreas</h3>
                 </div>
                 <div class="card-body">
                     <button type="button" class="btn btn-outline-primary mb-2" onclick="nuevo()">Crear</button>
-                    <table id="centro_data" class="table display responsive wrap">
+                    <table id="area_data" class="table display responsive wrap">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nombre del Centro Educativo</th>
+                                <th>Nombre del Área</th>
                                 <th>Estado</th>
                                 <th></th>
                                 <th></th>
@@ -76,9 +76,9 @@ if(isset($_SESSION["usu_id"])){
 </div>
     </div>
     <!-- /.Site warapper -->
-    <?php require_once("admCentroModal.php"); ?>
+    <?php require_once("admAreaModal.php"); ?>
     <?php include("modulos/js.php"); ?>
-    <script type="text/javascript" src="js/admCentro.js"></script>
+    <script type="text/javascript" src="js/admArea.js"></script>
 </body>
 </html>
 <?php
