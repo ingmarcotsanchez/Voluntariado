@@ -12,7 +12,7 @@ function guardar(e){
     e.preventDefault();
     var formData = new FormData($("#usuario_form")[0]);
     $.ajax({
-        url: "../../controller/usuario.php?opc=crear",
+        url: "/controller/usuario.php?opc=crear",
         type: "POST",
         data: formData,
         contentType: false,
@@ -23,9 +23,6 @@ function guardar(e){
 
             if (data==1){
 
-                /* $.post("../../controller/usuario.php?opc=emailBienvenida",{usu_correo : $("#usu_correo").val()},function(data){
-                    console.log(data);
-                }); */
 
                 Swal.fire({
                     icon: 'success',
@@ -34,8 +31,10 @@ function guardar(e){
                     showConfirmButton: false,
                     timer: 2000
                 })
-
+                $("#usu_nom").val('');
+                $("#usu_ape").val('');
                 $("#usu_correo").val('');
+                $("#usu_pass").val('');
             }else{
                 Swal.fire({
                     icon: 'error',

@@ -22,11 +22,6 @@
                 echo 2;
             }
             break;
-            /* $usuarios->insert_usuarios($_POST["usu_nom"],$_POST["usu_ape"],$_POST["usu_correo"],$_POST["usu_pass"],"AS");
-            break; */
-        /* case "emailBienvenida":
-            $email->email_bienvenida($_POST["usu_correo"]);
-            break; */
         case "mostrar":
             $datos=$usuarios->get_usuariosXid($_POST["usu_id"]);
             if(is_array($datos) == true and count($datos)<>0){

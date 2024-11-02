@@ -70,18 +70,25 @@
             <p>Roles</p>
         </a>
     </li>
-    <!-- <li class="nav-item">
-        <a href="admJornada.php" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>Jornadas</p>
-        </a>
-    </li> -->
     <li class="nav-item">
         <a href="admModalidad.php" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
             <p>Modalidad</p>
         </a>
     </li>
+    <li class="nav-item">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>Lugares</p>
+        </a>
+    </li>
+    <!-- <li class="nav-item">
+        <a href="admJornada.php" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>Jornadas</p>
+        </a>
+    </li> -->
+    
     <!-- <li class="nav-item">
         <a href="admTipos.php" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>

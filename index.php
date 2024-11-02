@@ -68,8 +68,8 @@
             </form>
         </div>
         <div class="container-form">
-            <form class="sign-up" id="usuario_form">
-                <input type="hidden" id="usu_rol" name="usu_rol" class="form-control" value="AS">
+            <form class="sign-up" method="post" id="usuario_form">
+                
                 <h2>Registrarse</h2>
                 <span>Ingrese la información solicitada</span>
                 <div class="container-input">
@@ -88,6 +88,7 @@
                     <i class='bx bx-lock-alt'></i>
                     <input type="password" id="usu_pass" name="usu_pass" placeholder="ingrese su contraseña">
                 </div>
+                <input type="hidden" id="usu_rol" name="usu_rol" class="form-control" value="AS">
                 <button type="submit" name="action" id="#" value="add" class="btn">Registrarse</button>
             </form>
         </div>
@@ -106,6 +107,5 @@
     </div>
     <script src="public/js/login.js"></script>
     <script type="text/javascript" src="public/js/index.js"></script>
-   <!--  <script type="text/javascript" src="views/js/admUsuario.js"></script> -->
 </body>
 </html>
