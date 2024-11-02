@@ -46,7 +46,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#" class="text-orange">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="#" class="text-green">Inicio</a></li>
               <li class="breadcrumb-item active"><?php echo $titulo; ?></li>
             </ol>
           </div>
@@ -100,7 +100,7 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header border-0">
-                <h3 class="card-title text-bold text-orange">Resultado Global</h3>
+                <h3 class="card-title text-bold text-green">Resultado Global</h3>
               </div>
               <div class="card-body table-responsive p-4">
               <div class="card card-light">
