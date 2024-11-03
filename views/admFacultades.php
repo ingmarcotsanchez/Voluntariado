@@ -22,10 +22,8 @@ if(isset($_SESSION["usu_id"])){
       <span class="brand-text font-weight-light">Voluntariado</span>
     </a>
     <div class="sidebar">
-      
-          <input type="hidden" id="usu_idx" value="<?php echo $_SESSION["usu_id"]; ?>">
-          
-      
+        <input type="hidden" id="usu_idx" value="<?php echo $_SESSION["usu_id"]; ?>">
+        <input type="hidden" id="rol_idx" value="<?php echo $_SESSION["rol_id"]; ?>"> 
       <nav class="mt-2">
         <?php require_once("modulos/menu.php");?>
       </nav>
