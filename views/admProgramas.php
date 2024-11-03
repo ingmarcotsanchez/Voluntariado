@@ -24,7 +24,7 @@ if(isset($_SESSION["usu_id"])){
     <div class="sidebar">
       
           <input type="hidden" id="usu_idx" value="<?php echo $_SESSION["usu_id"]; ?>">
-          <input type="hidden" id="rol_idx" value="<?php echo $_SESSION["rol_id"]; ?>">
+          <input type="hidden" id="rol_idx" value="<?php echo $_SESSION["usu_rol"]; ?>">
       
       <nav class="mt-2">
         <?php require_once("modulos/menu.php");?>
