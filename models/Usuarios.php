@@ -215,11 +215,147 @@
             return $resultado = $sql->fetchAll();
         } 
 
-        public function total_programas(){
+
+        public function get_lugares_x_usuario($usu_id){
             $conectar= parent::conexion();
             parent::set_names();
-            $sql="SELECT count(*) as total FROM programas";
+            $sql="SELECT 
+                lugares_usuarios.lugd_id,
+                lugares.lug_id,
+                lugares.lug_nom,
+                lugares.lug_descrip,
+                lugares.lug_fechini,
+                lugares.lug_fechfin,
+                usuarios.usu_id,
+                usuarios.usu_nom,
+                usuarios.usu_ape,
+                usuarios.usu_dni,
+                externos.ext_id,
+                externos.ext_nom,
+                externos.ext_ape
+                FROM lugares_usuarios INNER JOIN 
+                lugares ON lugares_usuarios.lug_id = lugares.lug_id INNER JOIN
+                usuarios ON lugares_usuarios.usu_id = usuarios.usu_id INNER JOIN
+                externos ON lugares.ext_id = externos.ext_id
+                WHERE 
+                lugares_usuario.usu_id = ?";
             $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $usu_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+
+        public function get_lugares_x_usuario_top10($usu_id){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="SELECT 
+                lugares_usuarios.lugd_id,
+                lugares.lug_id,
+                lugares.lug_nom,
+                lugares.lug_descrip,
+                lugares.lug_fechini,
+                lugares.lug_fechfin,
+                usuarios.usu_id,
+                usuarios.usu_nom,
+                usuarios.usu_ape,
+                usuarios.usu_dni,
+                externos.ext_id,
+                externos.ext_nom,
+                externos.ext_ape
+                FROM lugares_usuarios INNER JOIN 
+                lugares ON lugares_usuarios.lug_id = lugares.lug_id INNER JOIN
+                usuarios ON lugares_usuarios.usu_id = usuarios.usu_id INNER JOIN
+                externos ON lugares.ext_id = externos.ext_id
+                WHERE 
+                lugares_usuario.usu_id = ?
+                AND lugares_usuarios.est = 1
+                LIMIT 10";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $usu_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+
+        public function get_lugares_usuario_x_id($lug_id){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="SELECT 
+                lugares_usuarios.lugd_id,
+                lugares.lug_id,
+                lugares.lug_nom,
+                lugares.lug_descrip,
+                lugares.lug_fechini,
+                lugares.lug_fechfin,
+                usuarios.usu_id,
+                usuarios.usu_nom,
+                usuarios.usu_ape,
+                usuarios.usu_dni,
+                externos.ext_id,
+                externos.ext_nom,
+                externos.ext_ape
+                FROM lugares_usuarios INNER JOIN 
+                lugares ON lugares_usuarios.lug_id = lugares.lug_id INNER JOIN
+                usuarios ON lugares_usuarios.usu_id = usuarios.usu_id INNER JOIN
+                externos ON lugares.ext_id = externos.ext_id
+                WHERE 
+                lugares.lug_id = ?
+                AND lugares_usuarios.est = 1
+                ";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $lug_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+
+        public function get_lugares_x_id_detalle($lugd_id){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="SELECT 
+                lugares_usuarios.lugd_id,
+                lugares.lug_id,
+                lugares.lug_nom,
+                lugares.lug_descrip,
+                lugares.lug_fechini,
+                lugares.lug_fechfin,
+                usuarios.usu_id,
+                usuarios.usu_nom,
+                usuarios.usu_ape,
+                usuarios.usu_dni,
+                lugares.cur_img,
+                externos.ext_id,
+                externos.ext_nom,
+                externos.ext_ape
+                FROM lugares_usuarios INNER JOIN 
+                lugares ON lugares_usuarios.lug_id = lugares.lug_id INNER JOIN
+                usuarios ON lugares_usuarios.usu_id = usuarios.usu_id INNER JOIN
+                externos ON lugares.ext_id = externos.ext_id
+                WHERE 
+                lugares_usuarios.lugd_id = ?
+                ";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $lugd_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+
+        /*TODO: Cantidad de Cursos por Usuario */
+        public function get_total_lugares_x_usuario($usu_id){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="SELECT count(*) as total FROM lugares_usuarios WHERE usu_id=?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $usu_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+
+        /*TODO: Mostrar los datos del usuario segun el DNI */
+        public function get_usuario_x_dni($usu_dni){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="SELECT * FROM usuarios WHERE est=1 AND usu_dni=?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $usu_dni);
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }

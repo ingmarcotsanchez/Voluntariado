@@ -23,21 +23,6 @@
         </a>
     </li>
     <?php endif; ?>
-    <?php //if($_SESSION["usu_rol"] == "C"):?>
-        <!-- <li class="nav-item">
-            <a href="manualADM.php" class="nav-link">
-                <i class="nav-icon fas fa-copy"></i>
-                <p>Manual</p>
-            </a>
-        </li> -->
-    <?php //else: ?>
-        <!-- <li class="nav-item">
-            <a href="manualPROF.php" class="nav-link">
-                <i class="nav-icon fas fa-copy"></i>
-                <p>Manual</p>
-            </a>
-        </li> -->
-    <?php //endif; ?>
     <?php if($_SESSION["usu_rol"] == "C"):?>
     <li class="nav-header text-green">PARAMETRIZACIÓN</li>
     <li class="nav-item">
@@ -76,12 +61,21 @@
             <p>Modalidad</p>
         </a>
     </li>
+    <?php if($_SESSION["usu_rol"] == "C" OR $_SESSION["usu_rol"] == "EX"):?>
+    <li class="nav-header text-green">SECTOR EXTERNO</li>
     <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="admExternos.php" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>Externos</p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="admLugares.php" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
             <p>Lugares</p>
         </a>
     </li>
+    <?php endif; ?>
     <!-- <li class="nav-item">
         <a href="admJornada.php" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
