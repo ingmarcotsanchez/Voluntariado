@@ -45,7 +45,7 @@
                 $sub_array[] = $row["ext_correo"];
                 $sub_array[] = $row["ext_telf"];
                 $sub_array[] = '<button type="button" onClick="editar('.$row["ext_id"].');"  id="'.$row["ext_id"].'" class="btn btn-outline-warning btn-icon btn-sm"><div><i class="fa fa-edit"></i></div></button>';
-                $sub_array[] = '<button type="button" onClick="eliminar('.$row["ext_id"].');"  id="'.$row["ext_id"].'" class="btn btn-outline-danger btn-icon btn-sm"><div><i class="fa fa-close"></i></div></button>';                
+                $sub_array[] = '<button type="button" onClick="eliminar('.$row["ext_id"].');"  id="'.$row["ext_id"].'" class="btn btn-outline-danger btn-icon btn-sm"><div><i class="fa fa-trash"></i></div></button>';                
                 $data[] = $sub_array;
             }
 

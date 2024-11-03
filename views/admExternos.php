@@ -82,8 +82,8 @@ if(isset($_SESSION["usu_id"])){
     </div>
     
     <!-- /.Site warapper -->
-    <?php require_once("admExternoModal.php"); ?>
-    <?php require_once("admExternoPlantilla.php"); ?>
+    <?php require_once("admExternosModal.php"); ?>
+    <?php require_once("admExternosPlantilla.php"); ?>
     <?php include("modulos/js.php"); ?>
     <script type="text/javascript" src="js/admExterno.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>

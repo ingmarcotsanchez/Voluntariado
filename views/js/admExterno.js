@@ -13,7 +13,7 @@ function guardaryeditar(e){
     var formData = new FormData($("#externos_form")[0]);
     //console.log(formData);
     $.ajax({
-        url: "/Voluntariado/controller/externos.php?opc=guardaryeditar",
+        url: "/Voluntariado/controller/externo.php?opc=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -40,7 +40,7 @@ function crear(e){
     var formData = new FormData($("#externos_form")[0]);
     //console.log(formData);
     $.ajax({
-        url: "/Voluntariado/controller/externos.php?opc=crear",
+        url: "/Voluntariado/controller/externo.php?opc=crear",
         type: "POST",
         data: formData,
         contentType: false,
@@ -72,7 +72,7 @@ $(document).ready(function(){
             'csvHtml5',
         ],
         "ajax":{
-            url:"/Voluntariado/controller/externos.php?opc=listar",
+            url:"/Voluntariado/controller/externo.php?opc=listar",
             type:"post"
         },
         "bDestroy": true,
@@ -117,7 +117,7 @@ function nuevo(){
 }
 
 function editar(ext_id){
-    $.post("/Voluntariado/controller/externos.php?opc=mostrar",{ext_id:ext_id},function (data){
+    $.post("/Voluntariado/controller/externo.php?opc=mostrar",{ext_id:ext_id},function (data){
         data = JSON.parse(data);
         //console.log(data);
         $('#ext_id').val(data.ext_id);
@@ -141,7 +141,7 @@ function eliminar(ext_id){
         cancelButtonText: 'Cancelar',
     }).then((result)=>{
         if(result.value){
-            $.post("/Voluntariado/controller/externos.php?opc=eliminar",{ext_id:ext_id},function (data){
+            $.post("/Voluntariado/controller/externo.php?opc=eliminar",{ext_id:ext_id},function (data){
                 $('#externos_data').DataTable().ajax.reload();
                 Swal.fire({
                     title: 'Correcto!',
@@ -154,14 +154,14 @@ function eliminar(ext_id){
     });
 }
 function est_act(ext_id){
-    $.post("/Voluntariado/controller/externos.php?opc=activo",{ext_id:ext_id},function (data){
+    $.post("/Voluntariado/controller/externo.php?opc=activo",{ext_id:ext_id},function (data){
         $('#externos_data').DataTable().ajax.reload();
        // data = JSON.parse(data);
     });
 }
 
 function est_ina(ext_id){
-    $.post("/Voluntariado/controller/externos.php?opc=inactivo",{ext_id:ext_id},function (data){
+    $.post("/Voluntariado/controller/externo.php?opc=inactivo",{ext_id:ext_id},function (data){
         $('#externos_data').DataTable().ajax.reload();
     });
 }
@@ -191,7 +191,7 @@ var ExcelToJSON = function() {
 
                     var columns = Object.values(ProfesorList[i])
 
-                    $.post("/Voluntario/controller/externos.php?opc=guardar_desde_excel",{
+                    $.post("/Voluntario/controller/externo.php?opc=guardar_desde_excel",{
                         ext_nom : columns[0],
                         ext_ape : columns[1],
                         ext_correo : columns[2],

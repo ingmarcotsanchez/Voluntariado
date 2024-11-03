@@ -28,8 +28,8 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="text_correo">Correo Electrónico</label>
-                                <input type="email" class="form-control" name="text_correo" id="text_correo" placeholder="Ingrese un correo">
+                                <label for="ext_correo">Correo Electrónico</label>
+                                <input type="email" class="form-control" name="ext_correo" id="ext_correo" placeholder="Ingrese un correo">
                             </div>
                         </div>
                         <div class="col-4">
