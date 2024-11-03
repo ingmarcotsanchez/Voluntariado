@@ -224,8 +224,8 @@
                 lugares.lug_id,
                 lugares.lug_nom,
                 lugares.lug_descrip,
-                lugares.lug_fechini,
-                lugares.lug_fechfin,
+                lugares.lug_fecini,
+                lugares.lug_fecfin,
                 usuarios.usu_id,
                 usuarios.usu_nom,
                 usuarios.usu_ape,
@@ -238,7 +238,7 @@
                 usuarios ON lugares_usuarios.usu_id = usuarios.usu_id INNER JOIN
                 externos ON lugares.ext_id = externos.ext_id
                 WHERE 
-                lugares_usuario.usu_id = ?";
+                lugares_usuarios.usu_id = ?";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1, $usu_id);
             $sql->execute();
@@ -253,8 +253,8 @@
                 lugares.lug_id,
                 lugares.lug_nom,
                 lugares.lug_descrip,
-                lugares.lug_fechini,
-                lugares.lug_fechfin,
+                lugares.lug_fecini,
+                lugares.lug_fecfin,
                 usuarios.usu_id,
                 usuarios.usu_nom,
                 usuarios.usu_ape,
@@ -267,7 +267,7 @@
                 usuarios ON lugares_usuarios.usu_id = usuarios.usu_id INNER JOIN
                 externos ON lugares.ext_id = externos.ext_id
                 WHERE 
-                lugares_usuario.usu_id = ?
+                lugares_usuarios.usu_id = ?
                 AND lugares_usuarios.est = 1
                 LIMIT 10";
             $sql=$conectar->prepare($sql);
@@ -284,8 +284,8 @@
                 lugares.lug_id,
                 lugares.lug_nom,
                 lugares.lug_descrip,
-                lugares.lug_fechini,
-                lugares.lug_fechfin,
+                lugares.lug_fecini,
+                lugares.lug_fecfin,
                 usuarios.usu_id,
                 usuarios.usu_nom,
                 usuarios.usu_ape,
@@ -315,8 +315,8 @@
                 lugares.lug_id,
                 lugares.lug_nom,
                 lugares.lug_descrip,
-                lugares.lug_fechini,
-                lugares.lug_fechfin,
+                lugares.lug_fecini,
+                lugares.lug_fecfin,
                 usuarios.usu_id,
                 usuarios.usu_nom,
                 usuarios.usu_ape,
