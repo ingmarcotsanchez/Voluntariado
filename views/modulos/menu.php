@@ -61,14 +61,15 @@
             <p>Modalidad</p>
         </a>
     </li>
-    <?php if($_SESSION["usu_rol"] == "C" OR $_SESSION["usu_rol"] == "EX"):?>
-    <li class="nav-header text-green">SECTOR EXTERNO</li>
     <li class="nav-item">
         <a href="admExternos.php" class="nav-link">
             <i class="nav-icon fas fa-users"></i>
             <p>Externos</p>
         </a>
     </li>
+    <?php if($_SESSION["usu_rol"] == "C" OR $_SESSION["usu_rol"] == "EX"):?>
+    <li class="nav-header text-green">SECTOR EXTERNO</li>
+    
     <li class="nav-item">
         <a href="admLugares.php" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
@@ -98,8 +99,14 @@
     
 
     <?php endif; ?>
-    <?php if($_SESSION["usu_rol"] == "C" OR $_SESSION["usu_rol"] == "GM"):?>
+    <?php if($_SESSION["usu_rol"] == "C" OR $_SESSION["usu_rol"] == "GM" OR $_SESSION["usu_rol"] == "ES"):?>
     <li class="nav-header text-green">EJECUCIÓN</li>
+    <li class="nav-item">
+        <a href="admLugares.php" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>Lugares</p>
+        </a>
+    </li>
     <li class="nav-item">
         <a href="admPostulaciones.php" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>

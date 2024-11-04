@@ -95,7 +95,7 @@
             require 'phpqrcode/qrlib.php';
             //Primer Parametro - Text del QR
             //Segundo Parametro - Ruta donde se guardara el archivo
-            QRcode::png(conectar::ruta()."view/certificado.php?lugd_id=".$_POST["lugd_id"],"../public/qr/".$_POST["lugd_id"].".png",'L',32,5);
+            QRcode::png(conectar::ruta()."views/certificado.php?lugd_id=".$_POST["lugd_id"],"../public/qr/".$_POST["lugd_id"].".png",'L',32,5);
             break;
 
         case "update_imagen_lugares":

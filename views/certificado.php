@@ -1,5 +1,5 @@
 <?php
-define( "BASE_URL", "/Practica_Proyecto/views/");
+define("URL","/Voluntariado/views/");
 /* Llamamos al archivo de conexion.php */
 require_once("../config/conexion.php");
 if(isset($_SESSION["usu_id"])){
@@ -10,7 +10,7 @@ if(isset($_SESSION["usu_id"])){
   <?php
     include("modulos/head.php");
   ?>
-  <title>Proyecto | Perfil</title>
+  <title>Voluntariado | Certificado</title>
 </head>
 <body class="hold-transition sidebar-mini">
   <section class="content">
@@ -21,7 +21,7 @@ if(isset($_SESSION["usu_id"])){
         
             <!--<img src="../html/public/1.png" alt="certificado" class="img-fluid" height="650px" width="900px">-->
             <canvas id="canvas" height="650px" width="900px" class="img-fluid" alt="Responsive image"></canvas>
-            <p class="text-center m-2" id="descripcion">
+            <p class="text-center m-2" id="lug_descrip">
             
             </p>
     

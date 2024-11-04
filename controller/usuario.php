@@ -91,10 +91,10 @@
             foreach($datos as $row){
                 $sub_array = array();
                 $sub_array[] = $row["lug_nom"];
-                $sub_array[] = $row["lug_fechini"];
-                $sub_array[] = $row["lug_fechfin"];
+                $sub_array[] = $row["lug_fecini"];
+                $sub_array[] = $row["lug_fecfin"];
                 $sub_array[] = $row["ext_nom"]." ".$row["ext_ape"];
-                $sub_array[] = '<button type="button" onClick="certificado('.$row["lugd_id"].');"  id="'.$row["lugd_id"].'" class="btn btn-outline-primary btn-icon btn-sm"><div><i class="fa fa-id-card-o"></i></div></button>';
+                $sub_array[] = '<button type="button" onClick="certificado('.$row["lugd_id"].');"  id="'.$row["lugd_id"].'" class="btn btn-outline-primary btn-icon btn-sm"><div><i class="fa fa-eye"></i></div></button>';
                 $data[] = $sub_array;
             }
 

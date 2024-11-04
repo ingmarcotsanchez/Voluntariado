@@ -34,33 +34,6 @@ function guardaryeditar(e){
     });
 }
 
-function crear(e){
-    //console.log("prueba");
-    e.preventDefault();
-    var formData = new FormData($("#externos_form")[0]);
-    //console.log(formData);
-    $.ajax({
-        url: "/Voluntariado/controller/externo.php?opc=crear",
-        type: "POST",
-        data: formData,
-        contentType: false,
-        processData: false,
-        
-        success: function(data){
-            console.log(data);
-            $('#externos_data').DataTable().ajax.reload();
-            $('#modalcrearExternos').modal('hide');
-
-            Swal.fire({
-                title: 'Correcto!',
-                text: 'Se Registro de forma correcta el usuario',
-                icon: 'success',
-                confirmButtonText: 'Aceptar'
-            })
-        }
-    });
-}
-
 $(document).ready(function(){
 
     $('#externos_data').DataTable({

@@ -51,5 +51,5 @@ $(document).ready(function(){
 
 function certificado(lugd_id){
     console.log(lugd_id);
-    window.open('../certificado.php?lugd_id='+ lugd_id +'','_blank');
+    window.open('/Voluntariado/views/certificado.php?lugd_id='+ lugd_id +'','_blank');
 }

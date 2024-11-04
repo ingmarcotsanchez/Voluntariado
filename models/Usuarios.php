@@ -30,7 +30,7 @@
                         $_SESSION["usu_rol"]=$resultado["usu_rol"];
                         //$_SESSION["est"]=$resultado["est"];
                         
-                        if($usu_rol == "ES" || $usu_rol == "EX" || $usu_rol == "GC" || $usu_rol == "AS"){
+                        if(/* $usu_rol == "ES" || */ $usu_rol == "EX" || $usu_rol == "GC" || $usu_rol == "AS"){
                             //if($est == 0){
                                 header("Location:".Conectar::ruta()."views/perfil.php");
                                 exit();
