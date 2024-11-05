@@ -112,8 +112,8 @@
             foreach($datos as $row){
                 $sub_array = array();
                 $sub_array[] = $row["lug_nom"];
-                $sub_array[] = $row["lug_fechini"];
-                $sub_array[] = $row["lug_fechfin"];
+                $sub_array[] = $row["lug_fecini"];
+                $sub_array[] = $row["lug_fecfin"];
                 $sub_array[] = $row["ext_nom"]." ".$row["ext_ape"];
                 $sub_array[] = '<button type="button" onClick="certificado('.$row["lugd_id"].');"  id="'.$row["lugd_id"].'" class="btn btn-outline-primary btn-icon btn-sm"><div><i class="fa fa-id-card-o"></i></div></button>';
                 $data[] = $sub_array;
@@ -136,8 +136,8 @@
                     $output["lug_id"] = $row["lug_id"];
                     $output["lug_nom"] = $row["lug_nom"];
                     $output["lug_descrip"] = $row["lug_descrip"];
-                    $output["lug_fechini"] = $row["lug_fechini"];
-                    $output["lug_fechfin"] = $row["lug_fechfin"];
+                    $output["lug_fecini"] = $row["lug_fecini"];
+                    $output["lug_fecfin"] = $row["lug_fecfin"];
                     $output["lug_img"] = $row["lug_img"];
                     $output["usu_id"] = $row["usu_id"];
                     $output["usu_nom"] = $row["usu_nom"];
@@ -184,8 +184,8 @@
                 $sub_array = array();
                 $sub_array[] = $row["lug_nom"];
                 $sub_array[] = $row["usu_nom"]." ".$row["usu_ape"];
-                $sub_array[] = $row["lug_fechini"];
-                $sub_array[] = $row["lug_fechfin"];
+                $sub_array[] = $row["lug_fecini"];
+                $sub_array[] = $row["lug_fecfin"];
                 $sub_array[] = $row["ext_nom"]." ".$row["ext_ape"];
                 $sub_array[] = '<button type="button" onClick="certificado('.$row["lugd_id"].');"  id="'.$row["lugd_id"].'" class="btn btn-outline-primary btn-icon btn-sm"><div><i class="fa fa-id-card-o"></i></div></button>';
                 $sub_array[] = '<button type="button" onClick="eliminar('.$row["lugd_id"].');"  id="'.$row["lugd_id"].'" class="btn btn-outline-danger btn-icon btn-sm"><div><i class="fa fa-close"></i></div></button>';

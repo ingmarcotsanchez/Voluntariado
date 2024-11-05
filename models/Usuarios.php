@@ -321,7 +321,7 @@
                 usuarios.usu_nom,
                 usuarios.usu_ape,
                 usuarios.usu_dni,
-                lugares.cur_img,
+                lugares.lug_img,
                 externos.ext_id,
                 externos.ext_nom,
                 externos.ext_ape

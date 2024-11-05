@@ -3,13 +3,13 @@ var ctx = canvas.getContext('2d');
 
 /* Inicializamos la imagen */
 var image = new Image();
-image.src = 'Voluntariado/public/certificado.png';
+//image.src = data.lug_img;
 var imageqr = new Image();
 
 $(document).ready(function(){
     var lugd_id = getUrlParameter('lugd_id');
 
-    $.post("../../controller/usuario.php?opc=mostrar_curso_detalle", { lugd_id : lugd_id }, function (data) {
+    $.post("/Voluntariado/controller/usuario.php?opc=mostrar_curso_detalle", { lugd_id : lugd_id }, function (data) {
         data = JSON.parse(data);
         console.log(data);
 
