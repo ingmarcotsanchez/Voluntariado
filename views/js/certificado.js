@@ -3,7 +3,8 @@ var ctx = canvas.getContext('2d');
 
 /* Inicializamos la imagen */
 var image = new Image();
-//image.src = data.lug_img;
+image.src ='/Voluntariado/public/certificado.png';
+ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 var imageqr = new Image();
 
 $(document).ready(function(){
@@ -14,7 +15,7 @@ $(document).ready(function(){
         console.log(data);
 
        
-        image.src = data.lug_img;
+        /* image.src = data.lug_img;
         
         image.onload = function() {
             ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
@@ -44,7 +45,7 @@ $(document).ready(function(){
             }
             $('#lug_descrip').html(data.lug_descrip);
 
-        };
+        }; */
 
     });
 
