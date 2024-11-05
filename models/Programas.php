@@ -2,12 +2,12 @@
     class Programas extends Conectar{
 
         /* TODO: Obtener registros por id de categoria */
-        public function get_programas($cen_id){
+        public function get_programas($fac_id){
             $conectar= parent::conexion();
             parent::set_names();
-            $sql="SELECT * FROM programas WHERE cen_id=?;";
+            $sql="SELECT * FROM programas WHERE fac_id=?;";
             $sql=$conectar->prepare($sql);
-            $sql->bindValue(1, $cen_id);
+            $sql->bindValue(1, $fac_id);
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }

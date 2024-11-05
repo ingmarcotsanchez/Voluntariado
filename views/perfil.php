@@ -55,6 +55,23 @@
             <div class="row">
               <div class="col-6">
                   <div class="form-group">
+                      <label for="usu_tipo">Tipo de documento</label>
+                      <select class="form-control select2" name="usu_tipo" id="usu_tipo" data-placeholder="Seleccione">
+                          <option label="Seleccione"></option>
+                          <option value="CC">Cédula de Ciudadania</option>
+                          <option value="TI">Tarjeta de identidad</option>
+                          <option value="CE">Cédula de Extrangeria</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="col-6">
+                  <div class="form-group">
+                      <label for="usu_dni">Número de identificación</label>
+                      <input type="text" class="form-control" name="usu_dni" id="usu_dni" placeholder="Ingrese su número de identificación">
+                  </div>
+              </div>
+              <div class="col-6">
+                  <div class="form-group">
                       <label for="usu_nom">Nombres</label>
                       <input type="text" class="form-control" name="usu_nom" id="usu_nom" placeholder="Ingrese su nombre" disabled>
                   </div>
@@ -107,9 +124,39 @@
                       <input type="password" class="form-control" id="txtpassnew" name="txtpassnew" placeholder="Ingrese su nueva contraseña">
                   </div>
               </div>
+              <div class="col-4">
+                  <div class="form-group">
+                      <label for="cen_id">Sedes</label>
+                      <select class="form-control select2" style="width:100%" name="cen_id" id="cen_id" data-placeholder="Seleccione">
+                      
+                          <option label="Seleccione"></option>
+
+                      </select>
+                  </div>
+              </div>
+              <div class="col-4">
+                  <div class="form-group">
+                      <label for="fac_id">Facultad</label>
+                      <select class="form-control select2" style="width:100%" name="fac_id" id="fac_id" data-placeholder="Seleccione">
+                      
+                          <option label="Seleccione"></option>
+
+                      </select>
+                  </div>
+              </div>
+              <div class="col-4">
+                  <div class="form-group">
+                      <label for="prog_id">Programa</label>
+                      <select class="form-control select2" style="width:100%" name="prog_id" id="prog_id" data-placeholder="Seleccione">
+                      
+                          <option label="Seleccione"></option>
+
+                      </select>
+                  </div>
+              </div>
           </div>
           <div class="card-footer">
-            <button type="button" class="btn btn-outline-secondary" id="btnactualizar">Cambiar Contraseña</button>
+            <button type="button" class="btn btn-outline-secondary" id="btnactualizar">Actualizar información</button>
           </div>
         </div>
       </div>

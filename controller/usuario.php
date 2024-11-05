@@ -8,9 +8,9 @@
     switch($_GET["opc"]){
         case "guardaryeditar":
             if(empty($_POST["usu_id"])){
-                $usuarios->insert_usuarios($_POST["usu_nom"],$_POST["usu_ape"],$_POST["usu_correo"],$_POST["usu_pass"],$_POST["usu_rol"]);
+                $usuarios->insert_usuarios($_POST["usu_tipo"],$_POST["usu_dni"],$_POST["usu_nom"],$_POST["usu_ape"],$_POST["usu_correo"],$_POST["usu_pass"],$_POST["usu_rol"],$_POST["cen_id"],$_POST["fac_id"],$_POST["prog_id"]);
             }else{
-                $usuarios->update_usuarios($_POST["usu_id"],$_POST["usu_nom"],$_POST["usu_ape"],$_POST["usu_correo"],$_POST["usu_pass"],$_POST["usu_rol"]);
+                $usuarios->update_usuarios($_POST["usu_id"],$_POST["usu_tipo"],$_POST["usu_dni"],$_POST["usu_nom"],$_POST["usu_ape"],$_POST["usu_correo"],$_POST["usu_pass"],$_POST["usu_rol"],$_POST["cen_id"],$_POST["fac_id"],$_POST["prog_id"]);
             }
             break;
         case "crear":
@@ -26,11 +26,16 @@
             $datos=$usuarios->get_usuariosXid($_POST["usu_id"]);
             if(is_array($datos) == true and count($datos)<>0){
                 foreach($datos as $row){
+                    $output["usu_tipo"] = $row["usu_tipo"];
+                    $output["usu_dni"] = $row["usu_dni"];
                     $output["usu_nom"] = $row["usu_nom"];
                     $output["usu_ape"] = $row["usu_ape"];
                     $output["usu_correo"] = $row["usu_correo"];
                     $output["usu_rol"] = $row["usu_rol"];
                     $output["usu_pass"] = $row["usu_pass"];
+                    $output["cen_id"] = $row["cen_id"];
+                    $output["fac_id"] = $row["fac_id"];
+                    $output["prog_id"] = $row["prog_id"];
                 }
                 echo json_encode($output);
             }
@@ -39,7 +44,7 @@
             $usuarios->delete_usuarios($_POST["usu_id"]);
             break;
         case "editPerfil":
-            $usuarios->update_perfil($_POST["usu_id"],$_POST["passwd"]);
+            $usuarios->update_perfil($_POST["usu_id"],$_POST["usu_tipo"],$_POST["usu_dni"],$_POST["usu_pass"],$_POST["cen_id"],$_POST["fac_id"],$_POST["prog_id"]);
             break;
         case "listar":
             $datos=$usuarios->get_usuarios();
@@ -77,7 +82,7 @@
             echo json_encode($results);
             break;
         case "guardar_desde_excel":
-            $usuarios->insert_usuarios($_POST["usu_nom"],$_POST["usu_ape"],$_POST["usu_correo"],$_POST["usu_pass"],$_POST["usu_rol"]);
+            $usuarios->insert_usuarios($_POST["usu_tipo"],$_POST["usu_dni"],$_POST["usu_nom"],$_POST["usu_ape"],$_POST["usu_correo"],$_POST["usu_pass"],$_POST["usu_rol"],$_POST["cen_id"],$_POST["fac_id"],$_POST["prog_id"]);
             break;
         case "activo":
             $usuarios->update_estadoActivo($_POST["usu_id"]);

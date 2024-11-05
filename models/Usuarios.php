@@ -141,16 +141,26 @@
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
-        public function update_perfil($usu_id,$usu_pass){
+        public function update_perfil($usu_id,$usu_tipo,$usu_dni,$usu_pass,$cen_id,$fac_id,$prog_id){
             $conectar = parent::Conexion();
             parent::set_names();
             $sql = "UPDATE usuarios
                     SET 
-                    usu_pass = MD5(?)
+                    usu_tipo = ?,
+                    usu_dni = ?,
+                    usu_pass = MD5(?),
+                    cen_id = ?,
+                    fac_id = ?,
+                    prog_id = ?
                     WHERE usu_id = ?";
             $sql=$conectar->prepare($sql);
-            $sql->bindValue(1,$usu_pass);
-            $sql->bindValue(2,$usu_id);
+            $sql->bindValue(1,$usu_tipo);
+            $sql->bindValue(2,$usu_dni);
+            $sql->bindValue(3,$usu_pass);
+            $sql->bindValue(4,$cen_id);
+            $sql->bindValue(5,$fac_id);
+            $sql->bindValue(6,$prog_id);
+            $sql->bindValue(7,$usu_id);
             $sql->execute();
             return $resultado = $sql->fetchAll();
         }

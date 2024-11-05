@@ -69,7 +69,7 @@
         
         /* TODO: Formato para llenar combo en formato HTML */
         case "combo":
-            $datos = $programas->get_programas($_POST["cen_id"]);
+            $datos = $programas->get_programas($_POST["fac_id"]);
             $html="";
             $html.="<option label='Seleccionar'></option>";
             if(is_array($datos)==true and count($datos)>0){
