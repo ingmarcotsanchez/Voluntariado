@@ -112,7 +112,27 @@
         public function get_usuariosXid($usu_id){
             $usuario=parent::Conexion();
             parent::set_names();
-            $sql="SELECT * FROM usuarios WHERE usu_id=?";
+            //$sql="SELECT * FROM usuarios WHERE usu_id=?";
+            $sql="SELECT 
+                        usuarios.usu_id,
+                        usuarios.usu_tipo,
+                        usuarios.usu_dni,
+                        usuarios.usu_nom,
+                        usuarios.usu_ape,
+                        usuarios.usu_correo,
+                        usuarios.usu_pass,
+                        usuarios.usu_rol, 
+                        usuarios.cen_id,
+                        centros.cen_nom,
+                        usuarios.fac_id,
+                        facultades.fac_nom,
+                        usuarios.prog_id,
+                        programas.descripcion
+                FROM usuarios INNER JOIN
+                centros ON usuarios.cen_id = centros.cen_id INNER JOIN
+                facultades ON usuarios.fac_id = facultades.fac_id INNER JOIN
+                programas ON usuarios.prog_id = programas.prog_id
+                WHERE usu_id = ?";
             $sql=$usuario->prepare($sql);
             $sql->bindValue(1,$usu_id);
             $sql->execute();
