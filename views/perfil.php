@@ -95,11 +95,14 @@
                       <label for="usu_rol">Rol</label>
                       <select class="form-control select2" name="usu_rol" id="usu_rol" data-placeholder="Seleccione" disabled>
                           <option label="Seleccione"></option>
+                          <?php if($_SESSION["usu_rol"] == "C"): ?>
                           <option value="C">Administrador</option>
+                          <?php else: ?>
                           <option value="GC">Gestor Conocimiento</option>
                           <option value="ES">Estudiante</option>
                           <option value="EX">Sector Externo</option>
                           <option value="AS">Aspirante</option>
+                          <?php endif; ?>
                       </select>
                       
                   </div>

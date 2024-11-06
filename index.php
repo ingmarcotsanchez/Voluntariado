@@ -14,7 +14,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UDEC-Voluntariado</title>
     <link rel="stylesheet" href="public/css/style.css">
+    <link rel="icon" href="/Voluntariado/public/img/favicon.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -68,27 +70,35 @@
             </form>
         </div>
         <div class="container-form">
-            <form class="sign-up" method="post" id="usuario_form">
+            <form class="sign-up" method="post" id="registro_form">
                 
                 <h2>Registrarse</h2>
                 <span>Ingrese la información solicitada</span>
                 <div class="container-input">
                     <i class='bx bx-user'></i>
-                    <input type="text" id="usu_nom" name="usu_nom" placeholder="ingrese sus Nombres">
+                    <input type="text" id="nombres" name="nombres" placeholder="ingrese sus Nombres">
                 </div>
                 <div class="container-input">
                     <i class='bx bx-user'></i>
-                    <input type="text" id="usu_ape" name="usu_ape" placeholder="ingrese sus Apellidos">
+                    <input type="text" id="apellidos" name="apellidos" placeholder="ingrese sus Apellidos">
                 </div>
                 <div class="container-input">
                     <i class='bx bx-envelope'></i>
-                    <input type="email" id="usu_correo" name="usu_correo" placeholder="ingrese su correo electrónico">
+                    <input type="email" id="correoelectronico" name="correoelectronico" placeholder="ingrese su correo electrónico">
                 </div>
                 <div class="container-input">
                     <i class='bx bx-lock-alt'></i>
-                    <input type="password" id="usu_pass" name="usu_pass" placeholder="ingrese su contraseña">
+                    <input type="password" id="passwd" name="passwd" placeholder="ingrese su contraseña">
                 </div>
-                <input type="hidden" id="usu_rol" name="usu_rol" class="form-control" value="AS">
+                <div class="container-input">
+                    <i class='bx bx-user'></i>
+                    <select class="custom-select rounded-0" id="roles" name="roles">
+                        <option>Seleccione...</option>
+                        <option value="ES">Estudiante</option>
+                        <option value="GC">Gestor Conocimiento</option>
+                        <option value="EX">Sector Externo</option>
+                    </select>
+                </div>
                 <button type="submit" name="action" id="#" value="add" class="btn">Registrarse</button>
             </form>
         </div>
@@ -105,7 +115,8 @@
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="public/js/login.js"></script>
-    <script type="text/javascript" src="public/js/index.js"></script>
+    <script type="text/javascript" src="/Voluntariado/views/js/index.js"></script>
 </body>
 </html>

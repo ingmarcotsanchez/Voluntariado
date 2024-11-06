@@ -15,7 +15,7 @@
         </a>
     </li>
     <?php endif; ?>
-    <?php if($_SESSION["usu_rol"] == "C" OR $_SESSION["usu_rol"] == "GC" OR $_SESSION["usu_rol"] == "ES" OR $_SESSION["usu_rol"] == "EX" OR $_SESSION["usu_rol"] == "AS"):?>
+    <?php if($_SESSION["usu_rol"] == "C" OR $_SESSION["usu_rol"] == "GC" OR $_SESSION["usu_rol"] == "ES" OR $_SESSION["usu_rol"] == "EX"):?>
     <li class="nav-item">
         <a href="perfil.php" class="nav-link">
             <i class="nav-icon fas fa-user"></i>

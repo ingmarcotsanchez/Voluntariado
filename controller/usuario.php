@@ -14,9 +14,9 @@
             }
             break;
         case "crear":
-            $datos = $usuarios->get_correo($_POST["usu_correo"]);
+            $datos = $usuarios->get_correo($_POST["correoelectronico"]);
             if(is_array($datos)==true and count($datos)==0){
-                $usuarios->insert_usuarios($_POST["usu_nom"],$_POST["usu_ape"],$_POST["usu_correo"],$_POST["usu_pass"],"AS");
+                $usuarios->crear_usuarios($_POST["nombres"],$_POST["apellidos"],$_POST["correoelectronico"],$_POST["passwd"],$_POST["roles"]);
                 echo 1;
             }else{
                 echo 2;

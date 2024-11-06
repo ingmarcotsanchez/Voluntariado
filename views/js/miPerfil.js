@@ -58,10 +58,10 @@ $(document).ready(function(){
             $('#fac_id').html(data);
         }); 
     });
-    /* $.post("/Voluntariado/controller/facultades.php?opc=combo",function(data, status){
+   /*   $.post("/Voluntariado/controller/facultades.php?opc=combo",function(data, status){
         console.log(data);
         $('#fac_id').html(data);
-    }); */
+    });  */
 
     $("#fac_id").change(function(){
         fac_id = $(this).val();
@@ -90,7 +90,7 @@ $(document).on("click","#btnactualizar", function(){
     var pass = $("#txtpass").val();
     var newpass = $("#txtpassnew").val();
     if (pass.length == 0 || newpass.length == 0) {
-        //location.reload();
+        location.reload();
         Swal.fire({
             title: 'Error!',
             text: 'Las contraseñas no puede ir vacias',

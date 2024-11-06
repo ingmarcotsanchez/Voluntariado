@@ -138,6 +138,8 @@
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
+
+        /*ingresar un registro de usuarios*/
         public function get_correo($usu_correo) {
             $conectar = parent::conexion();
             parent::set_names();
@@ -161,6 +163,21 @@
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
+        public function crear_usuarios($usu_nom,$usu_ape,$usu_correo,$usu_pass,$usu_rol){
+            $usuario=parent::Conexion();
+            parent::set_names();
+            $sql="INSERT INTO usuarios(usu_id,usu_nom,usu_ape,usu_correo,usu_pass,usu_rol,fech_crea,estado)
+                    VALUES(NULL,?,?,?,MD5(?),?,now(),1)";
+            $sql=$usuario->prepare($sql);
+            $sql->bindValue(1,$usu_nom);
+            $sql->bindValue(2,$usu_ape);
+            $sql->bindValue(3,$usu_correo);
+            $sql->bindValue(4,$usu_pass);
+            $sql->bindValue(5,$usu_rol);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+         /* fin de ingresar un registro de usuarios*/
         public function update_perfil($usu_id,$usu_tipo,$usu_dni,$usu_pass,$cen_id,$fac_id,$prog_id){
             $conectar = parent::Conexion();
             parent::set_names();
