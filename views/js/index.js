@@ -12,7 +12,7 @@ function guardar(e){
     e.preventDefault();
     var formData = new FormData($("#registro_form")[0]);
     $.ajax({
-        url: "/controller/usuario.php?opc=crear",
+        url: "/Voluntariado/controller/usuario.php?opc=crear",
         type: "POST",
         data: formData,
         contentType: false,

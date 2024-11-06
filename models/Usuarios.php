@@ -166,7 +166,7 @@
         public function crear_usuarios($usu_nom,$usu_ape,$usu_correo,$usu_pass,$usu_rol){
             $usuario=parent::Conexion();
             parent::set_names();
-            $sql="INSERT INTO usuarios(usu_id,usu_nom,usu_ape,usu_correo,usu_pass,usu_rol,fech_crea,estado)
+            $sql="INSERT INTO usuarios(usu_id,usu_nom,usu_ape,usu_correo,usu_pass,usu_rol,fech_crea,est)
                     VALUES(NULL,?,?,?,MD5(?),?,now(),1)";
             $sql=$usuario->prepare($sql);
             $sql->bindValue(1,$usu_nom);

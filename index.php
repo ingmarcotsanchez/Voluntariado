@@ -116,6 +116,7 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="public/js/login.js"></script>
     <script type="text/javascript" src="/Voluntariado/views/js/index.js"></script>
 </body>
