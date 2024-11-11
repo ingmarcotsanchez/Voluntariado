@@ -13,7 +13,28 @@ $(document).ready(function(){
     $.post("/Voluntariado/controller/usuario.php?opc=mostrar_curso_detalle", { lugd_id : lugd_id }, function (data) {
         data = JSON.parse(data);
         console.log(data);
+        ctx.font = '40px Arial';
+            ctx.textAlign = "center";
+            ctx.textBaseline = 'middle';
+            var x = canvas.width / 2;
+            ctx.fillText(data.usu_nom+' '+ data.usu_ape, x, 250);
 
+            ctx.font = '20px Arial';
+            ctx.fillText('El voluntariado en:', x, 350);
+
+            ctx.font = '18px Arial';
+            ctx.fillText(data.lug_descrip, x, 380);
+            ctx.font = '30px Arial';
+            ctx.fillText(data.lug_nom, x, 410);
+
+            ctx.font = '20px Arial';
+            ctx.fillText(data.ext_nom+' '+ data.ext_ape, x, 480);
+            ctx.font = '15px Arial';
+            ctx.fillText('Supervisor del lugar', x, 500);
+
+            ctx.font = '15px Arial';
+            ctx.fillText('Fecha de Inicio : '+data.lug_fecini+' / '+'Fecha de Finalización : '+data.lug_fecfin+'', x, 590);
+        //$('#lug_descrip').html(data.lug_descrip);
        
         /* image.src = data.lug_img;
         

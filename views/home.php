@@ -94,6 +94,19 @@
             </div>
             
           <?php endif; ?>
+          <?php if($_SESSION["usu_rol"] == "ES"): ?>
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box">
+                <span class="info-box-icon bg-primary elevation-1"><i class="fa fa-calendar"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Total de Voluntariados</span>
+                  <span class="info-box-number">
+                    <span id="lbltotal"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
           <div class="clearfix hidden-md-up"></div>
         </div>
         
@@ -104,7 +117,8 @@
   
 </div>
 <?php require_once("modulos/js.php");?>
-<script src="../public/js/home.js"></script>
+<!-- <script src="../public/js/home.js"></script> -->
+<script src="js/usuhome.js"></script>
 
 
 </body>
