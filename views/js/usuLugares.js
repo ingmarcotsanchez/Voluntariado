@@ -53,3 +53,4 @@ function certificado(lugd_id){
     console.log(lugd_id);
     window.open('/Voluntariado/views/certificado.php?lugd_id='+ lugd_id +'','_blank');
 }
+

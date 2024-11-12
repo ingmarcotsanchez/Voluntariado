@@ -99,7 +99,14 @@
                 $sub_array[] = $row["lug_fecini"];
                 $sub_array[] = $row["lug_fecfin"];
                 $sub_array[] = $row["ext_nom"]." ".$row["ext_ape"];
-                $sub_array[] = '<button type="button" onClick="certificado('.$row["lugd_id"].');"  id="'.$row["lugd_id"].'" class="btn btn-outline-primary btn-icon btn-sm"><div><i class="fa fa-eye"></i></div></button>';
+                if($row["est"] == 1){
+                    $sub_array[] = "<strong class='text-success'>Terminado</strong>";
+                    $sub_array[] = '<button type="button" onClick="certificado('.$row["lugd_id"].');"  id="'.$row["lugd_id"].'" class="btn btn-outline-primary btn-icon btn-sm"><div><i class="fa fa-eye"></i></div></button>';
+                }else{
+                    $sub_array[] = "<strong class='tex-dark'>En proceso</strong>";
+                    $sub_array[] = '<button disabled type="button" onClick="certificado('.$row["lugd_id"].');"  id="'.$row["lugd_id"].'" class="btn btn-outline-primary btn-icon btn-sm"><div><i class="fa fa-eye"></i></div></button>';
+                }
+                
                 $data[] = $sub_array;
             }
 

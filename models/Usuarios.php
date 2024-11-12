@@ -279,7 +279,8 @@
                 usuarios.usu_dni,
                 externos.ext_id,
                 externos.ext_nom,
-                externos.ext_ape
+                externos.ext_ape,
+                lugares_usuarios.est
                 FROM lugares_usuarios INNER JOIN 
                 lugares ON lugares_usuarios.lug_id = lugares.lug_id INNER JOIN
                 usuarios ON lugares_usuarios.usu_id = usuarios.usu_id INNER JOIN
