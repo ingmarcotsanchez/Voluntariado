@@ -86,7 +86,8 @@ if(isset($_SESSION["usu_id"])){
     
     <!-- /.Site warapper -->
     <?php require_once("admLugaresModal.php"); ?>
-    <?php require_once("modalfile.php"); ?>
+    <?php require_once("admLugaresInfoModal.php"); ?>
+ 
     <?php include("modulos/js.php"); ?>
     <script type="text/javascript" src="js/admLugares.js"></script>
 </body>

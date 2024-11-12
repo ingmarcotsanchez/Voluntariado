@@ -129,6 +129,45 @@ function editar(lug_id){
     $('#modalcrearLugar').modal('show');
 }
 
+function info(lug_id){
+    $.post("/Voluntariado/controller/lugares.php?opc=mostrar",{lug_id:lug_id},function (data){
+        data = JSON.parse(data);
+        console.log(data);
+       /*  $('#lug_id').val(data.lug_id);
+        $('#area_id').val(data.area_id).trigger('change');
+        $('#lug_nom').val(data.lug_nom); */
+        $('#lug_descrip').val(data.lug_descrip);
+        /* $('#lug_fecini').val(data.lug_fecini);
+        $('#lug_fecfin').val(data.lug_fecfin);
+        $('#ext_id').val(data.ext_id).trigger('change'); */
+    });
+    $('#titulo_modal').html('Información del lugar');
+    $('#modalcrearLugarInfo').modal('show');
+}
+
+function inscribir(lug_id){
+    Swal.fire({
+        title: 'Alerta!',
+        text: 'Desea inscribirse en este espacio de voluntariado?',
+        icon: 'alert',
+        showCancelButton: true,
+        confirmButtonText: 'Aceptar',
+        cancelButtonText: 'Cancelar',
+    }).then((result)=>{
+        if(result.value){
+            $.post("/Voluntariado/controller/lugares.php?opc=insert_lugares_usuario",{lug_id:lug_id},function (data){
+                $('#usuario_data').DataTable().ajax.reload();
+                Swal.fire({
+                    title: 'Correcto!',
+                    text: 'Se Registro de forma correcta el usuario',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                })
+            }); 
+        }
+    });
+}
+
 function eliminar(lug_id){
     Swal.fire({
         title: 'Eliminar!',
@@ -153,11 +192,6 @@ function eliminar(lug_id){
 
 }
 
-function imagen(lug_id){
-    $('#lugx_idx').val(lug_id);
-    $('#modalfile').modal('show');
-}
-
 function est_act(lug_id){
     $.post("/Voluntariado/controller/lugares.php?opc=activo",{lug_id:lug_id},function (data){
         $('#lugares_data').DataTable().ajax.reload();
@@ -171,27 +205,5 @@ function est_ina(lug_id){
     });
 }
 
-function guardaryeditarimg(e){
-    e.preventDefault();
-    var formData = new FormData($("#detalle_form")[0]);
-    $.ajax({
-        url: "/Voluntariado/controller/lugares.php?op=update_imagen_curso",
-        type: "POST",
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function(datos){ 
-            $('#lugares_data').DataTable().ajax.reload();
-            Swal.fire({
-                title: 'Correcto!',
-                text: 'Se Actualizo Correctamente',
-                icon: 'success',
-                confirmButtonText: 'Aceptar'
-            })
-            $("#modalfile").modal('hide');
-
-        }
-    });
-}
 
 init();

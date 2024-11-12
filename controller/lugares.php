@@ -5,7 +5,7 @@
     require_once("../models/Lugares.php");
     /*TODO: Inicializando Clase */
     $lugares = new Lugares();
-
+    $usu_rol = $_SESSION["usu_rol"];
     /*TODO: Opcion de solicitud de controller */
     switch($_GET["opc"]){
         /*TODO: Guardar y editar cuando se tenga el ID */
@@ -32,6 +32,7 @@
                 echo json_encode($output);
             }
             break;
+            
         /*TODO: Eliminar segun ID */
         case "eliminar":
             $lugares->delete_lugares($_POST["lug_id"]);
@@ -43,7 +44,8 @@
             foreach($datos as $row){
                 $sub_array = array();
                 $sub_array[] = $row["area_nom"];
-                $sub_array[] = '<a href="'.$row["lug_img"].'" target="_blank">'.strtoupper($row["lug_nom"]).'</a>';
+                $sub_array[] = $row["lug_nom"];
+                /* $sub_array[] = '<a href="'.$row["lug_img"].'" target="_blank">'.strtoupper($row["lug_nom"]).'</a>'; */
                 $sub_array[] = $row["lug_fecini"];
                 $sub_array[] = $row["lug_fecfin"];
                 $sub_array[] = $row["ext_nom"] ." ". $row["ext_ape"];
@@ -52,9 +54,16 @@
                 }else{
                     $sub_array[] = "<button type='button' onClick='est_act(".$row["lug_id"].");' class='btn btn-danger btn-sm'>Inactivo</button>";
                 }
-                $sub_array[] = '<button type="button" onClick="editar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-warning btn-icon btn-sm"><div><i class="fa fa-edit"></i></div></button>';
-                $sub_array[] = '<button type="button" onClick="eliminar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-danger btn-icon btn-sm"><div><i class="fa fa-trash"></i></div></button>';                
-                $sub_array[] = '<button type="button" onClick="imagen('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-success btn-icon btn-sm"><div><i class="fa fa-file"></i></div></button>';                
+                if($usu_rol == 'C'){
+                    $sub_array[] = '<button type="button" onClick="editar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-warning btn-icon btn-sm"><div><i class="fa fa-edit"></i></div></button>';
+                    $sub_array[] = '<button type="button" onClick="eliminar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-danger btn-icon btn-sm"><div><i class="fa fa-trash"></i></div></button>';                
+                    $sub_array[] = "";
+                }else{
+                    $sub_array[] = "";
+                    $sub_array[] = '<button type="button" onClick="info('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-dark btn-icon btn-sm"><div><i class="fa fa-eye"></i></div></button>';
+                    $sub_array[] = '<button type="button" onClick="inscribir('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-success btn-icon btn-sm"><div><i class="fa fa-user"></i></div></button>';
+                }
+                
                 $data[] = $sub_array;
             }
 
@@ -77,23 +86,15 @@
             }
             break;
 
-        case "eliminar_lugares_usuario":
-            $lugares->delete_lugares_usuario($_POST["lugd_id"]);
-            break;
         /*TODO: Insetar detalle de curso usuario */
         case "insert_lugares_usuario":
             /*TODO: Array de usuario separado por comas */
-            $datos = explode(',', $_POST['usu_id']);
+            $usu_id = $_SESSION['usu_id'];
             /*TODO: Registrar tantos usuarios vengan de la vista */
-            $data = Array();
-            foreach($datos as $row){
-                $sub_array = array();
-                $idx=$curso->insert_lugares_usuario($_POST["lug_id"],$row);
-                $sub_array[] = $idx;
-                $data[] = $sub_array;
-            }
-
-            echo json_encode($data);
+            $lugares->insert_lugares_usuario($_POST["lug_id"],$usu_id);
+                
+         
+        
             break;
 
         case "generar_qr":
@@ -103,8 +104,5 @@
             QRcode::png(conectar::ruta()."views/certificado.php?lugd_id=".$_POST["lugd_id"],"../public/qr/".$_POST["lugd_id"].".png",'L',32,5);
             break;
 
-        case "update_imagen_lugares":
-            $lugares->update_imagen_lugares($_POST["lugx_idx"],$_POST["lug_img"]);
-            break;
     }
 ?>
