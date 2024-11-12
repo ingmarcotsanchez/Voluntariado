@@ -188,7 +188,8 @@
                     usu_pass = MD5(?),
                     cen_id = ?,
                     fac_id = ?,
-                    prog_id = ?
+                    prog_id = ?,
+                    fech_mod = now()
                     WHERE usu_id = ?";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$usu_tipo);
