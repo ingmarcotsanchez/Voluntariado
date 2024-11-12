@@ -1,5 +1,5 @@
 <?php
-$titulo="Lugares de voluntariado";
+$titulo="Mis Lugares de voluntariado";
 define("URL","/Voluntariado/views/");
 require_once("../config/conexion.php");
 if(isset($_SESSION["usu_id"])){
@@ -52,23 +52,16 @@ if(isset($_SESSION["usu_id"])){
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Lugares disponibles</h3>
+                    <h3 class="card-title">Mis Voluntariados Realizados</h3>
                 </div>
                 <div class="card-body">
-                    <button type="button" class="btn btn-outline-primary mb-2" onclick="nuevo()">Crear Lugar</button>
-                    <button type="button" class="btn btn-outline-secondary mb-2" id="btnplantilla">Cargar Planilla</button>
-                    
                     <table id="lugares_data" class="table display responsive wrap">
                         <thead>
                             <tr>
-                                <th>Área</th>
                                 <th>Lugar</th>
                                 <th>Fecha de inicio</th>
                                 <th>Fecha de terminación</th>
                                 <th>Supervisor</th>
-                                <th>Estado</th>
-                                <th></th>
-                                <th></th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -85,10 +78,8 @@ if(isset($_SESSION["usu_id"])){
     </div>
     
     <!-- /.Site warapper -->
-    <?php require_once("admLugaresModal.php"); ?>
-    <?php require_once("modalfile.php"); ?>
     <?php include("modulos/js.php"); ?>
-    <script type="text/javascript" src="js/admLugares.js"></script>
+    <script type="text/javascript" src="js/usuLugares.js"></script>
 </body>
 </html>
 <?php

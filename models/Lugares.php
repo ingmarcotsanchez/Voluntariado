@@ -1,22 +1,22 @@
 <?php
     class Lugares extends Conectar{
 
-        public function insert_lugares($area_id,$lug_nom,$lug_descrip,$lug_fechini,$lug_fechfin,$ext_id){
+        public function insert_lugares($area_id,$lug_nom,$lug_descrip,$lug_fecini,$lug_fecfin,$ext_id){
             $conectar= parent::conexion();
             parent::set_names();
-            $sql="INSERT INTO lugares (lug_id, area_id, lug_nom, lug_descrip, lug_fechini, lug_fechfin, ext_id,lug_img, fech_crea, est) VALUES (NULL,?,?,?,?,?,?,'../../public/1.png', now(),'1');";
+            $sql="INSERT INTO lugares (lug_id, area_id, lug_nom, lug_descrip, lug_fecini, lug_fecfin, ext_id,lug_img, fech_crea, est) VALUES (NULL,?,?,?,?,?,?,'../../public/1.png', now(),'1');";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1, $area_id);
             $sql->bindValue(2, $lug_nom);
             $sql->bindValue(3, $lug_descrip);
-            $sql->bindValue(5, $lug_fechfin);
-            $sql->bindValue(4, $lug_fechini);
+            $sql->bindValue(5, $lug_fecfin);
+            $sql->bindValue(4, $lug_fecini);
             $sql->bindValue(6, $ext_id);
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
 
-        public function update_lugares($lug_id,$area_id,$lug_nom,$lug_descrip,$lug_fechini,$lug_fechfin,$ext_id){
+        public function update_lugares($lug_id,$area_id,$lug_nom,$lug_descrip,$lug_fecini,$lug_fecfin,$ext_id){
             $conectar= parent::conexion();
             parent::set_names();
             $sql="UPDATE lugares
@@ -24,8 +24,8 @@
                     area_id =?,
                     lug_nom = ?,
                     lug_descrip = ?,
-                    lug_fechini = ?,
-                    lug_fechfin = ?,
+                    lug_fecini = ?,
+                    lug_fecfin = ?,
                     ext_id = ?
                 WHERE
                     lug_id = ?";
@@ -33,8 +33,8 @@
             $sql->bindValue(1, $area_id);
             $sql->bindValue(2, $lug_nom);
             $sql->bindValue(3, $lug_descrip);
-            $sql->bindValue(5, $lug_fechfin);
-            $sql->bindValue(4, $lug_fechini);
+            $sql->bindValue(5, $lug_fecfin);
+            $sql->bindValue(4, $lug_fecini);
             $sql->bindValue(6, $ext_id);
             $sql->bindValue(7, $lug_id);
             $sql->execute();
@@ -62,8 +62,8 @@
                 lugares.lug_id,
                 lugares.lug_nom,
                 lugares.lug_descrip,
-                lugares.lug_fechini,
-                lugares.lug_fechfin,
+                lugares.lug_fecini,
+                lugares.lug_fecfin,
                 lugares.area_id,
                 lugares.lug_img,
                 areas.area_nom,
@@ -71,7 +71,8 @@
                 externos.ext_nom,
                 externos.ext_ape,
                 externos.ext_correo,
-                externos.ext_telf
+                externos.ext_telf,
+                lugares.est
                 FROM lugares
                 INNER JOIN areas on lugares.area_id = areas.area_id
                 INNER JOIN externos on lugares.ext_id = externos.ext_id
@@ -148,9 +149,9 @@
             if(isset($_FILES["lug_img"])){
                 $extension = explode('.', $_FILES['lug_img']['name']);
                 $new_name = rand() . '.' . $extension[1];
-                $destination = '../public/' . $new_name;
+                $destination = '/Voluntariado/public/' . $new_name;
                 move_uploaded_file($_FILES['lug_img']['tmp_name'], $destination);
-                return "../../public/".$new_name;
+                return "/Voluntariado/public/".$new_name;
             }
         }
     }

@@ -102,9 +102,9 @@
     <?php if($_SESSION["usu_rol"] == "C" OR $_SESSION["usu_rol"] == "GM" OR $_SESSION["usu_rol"] == "ES"):?>
     <li class="nav-header text-green">EJECUCIÓN</li>
     <li class="nav-item">
-        <a href="admLugares.php" class="nav-link">
+        <a href="usuLugares.php" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
-            <p>Lugares</p>
+            <p>Mis Voluntariados</p>
         </a>
     </li>
     <li class="nav-item">

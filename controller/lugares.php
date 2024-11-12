@@ -11,9 +11,9 @@
         /*TODO: Guardar y editar cuando se tenga el ID */
         case "guardaryeditar":
             if(empty($_POST["lug_id"])){
-                $lugares->insert_lugares($_POST["area_id"],$_POST["lug_nom"],$_POST["lug_descrip"],$_POST["lug_fechini"],$_POST["lug_fechfin"],$_POST["ext_id"]);
+                $lugares->insert_lugares($_POST["area_id"],$_POST["lug_nom"],$_POST["lug_descrip"],$_POST["lug_fecini"],$_POST["lug_fecfin"],$_POST["ext_id"]);
             }else{
-                $lugares->update_lugares($_POST["lug_id"],$_POST["area_id"],$_POST["lug_nom"],$_POST["lug_descrip"],$_POST["lug_fechini"],$_POST["lug_fechfin"],$_POST["ext_id"]);
+                $lugares->update_lugares($_POST["lug_id"],$_POST["area_id"],$_POST["lug_nom"],$_POST["lug_descrip"],$_POST["lug_fecini"],$_POST["lug_fecfin"],$_POST["ext_id"]);
             }
             break;
         /*TODO: Creando Json segun el ID */
@@ -25,8 +25,8 @@
                     $output["area_id"] = $row["area_id"];
                     $output["lug_nom"] = $row["lug_nom"];
                     $output["lug_descrip"] = $row["lug_descrip"];
-                    $output["lug_fechini"] = $row["lug_fechini"];
-                    $output["lug_fechfin"] = $row["lug_fechfin"];
+                    $output["lug_fecini"] = $row["lug_fecini"];
+                    $output["lug_fecfin"] = $row["lug_fecfin"];
                     $output["ext_id"] = $row["ext_id"];
                 }
                 echo json_encode($output);
@@ -44,11 +44,16 @@
                 $sub_array = array();
                 $sub_array[] = $row["area_nom"];
                 $sub_array[] = '<a href="'.$row["lug_img"].'" target="_blank">'.strtoupper($row["lug_nom"]).'</a>';
-                $sub_array[] = $row["lug_fechini"];
-                $sub_array[] = $row["lug_fechfin"];
+                $sub_array[] = $row["lug_fecini"];
+                $sub_array[] = $row["lug_fecfin"];
                 $sub_array[] = $row["ext_nom"] ." ". $row["ext_ape"];
+                if($row["est"] == '1'){
+                    $sub_array[] = "<button type='button' onClick='est_ina(".$row["lug_id"].");' class='btn btn-success btn-sm'>Activo</button>";
+                }else{
+                    $sub_array[] = "<button type='button' onClick='est_act(".$row["lug_id"].");' class='btn btn-danger btn-sm'>Inactivo</button>";
+                }
                 $sub_array[] = '<button type="button" onClick="editar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-warning btn-icon btn-sm"><div><i class="fa fa-edit"></i></div></button>';
-                $sub_array[] = '<button type="button" onClick="eliminar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-danger btn-icon btn-sm"><div><i class="fa fa-close"></i></div></button>';                
+                $sub_array[] = '<button type="button" onClick="eliminar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-danger btn-icon btn-sm"><div><i class="fa fa-trash"></i></div></button>';                
                 $sub_array[] = '<button type="button" onClick="imagen('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-success btn-icon btn-sm"><div><i class="fa fa-file"></i></div></button>';                
                 $data[] = $sub_array;
             }
