@@ -43,48 +43,48 @@ $(document).ready(function(){
     combo_area();
 
 
-        $('#lugares_data').DataTable({
-            "aProcessing": true,
-            "aServerSide": true,
-            dom: 'Bfrtip',
-            buttons: [
-                'excelHtml5',
-                'csvHtml5',
-            ],
-            "ajax":{
-                url:"/Voluntariado/controller/lugares.php?opc=listarxRol",
-                type:"post"
+    $('#lugares_data').DataTable({
+        "aProcessing": true,
+        "aServerSide": true,
+        dom: 'Bfrtip',
+        buttons: [
+            'excelHtml5',
+            'csvHtml5',
+        ],
+        "ajax":{
+            url:"/Voluntariado/controller/lugares.php?opc=listarxRol",
+            type:"post"
+        },
+        "bDestroy": true,
+        "responsive": true,
+        "bInfo":true,
+        "iDisplayLength": 15,
+        "order": [[ 0, "desc" ]],
+        "language": {
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar _MENU_ registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst":    "Primero",
+                "sLast":     "Último",
+                "sNext":     "Siguiente",
+                "sPrevious": "Anterior"
             },
-            "bDestroy": true,
-            "responsive": true,
-            "bInfo":true,
-            "iDisplayLength": 15,
-            "order": [[ 0, "desc" ]],
-            "language": {
-                "sProcessing":     "Procesando...",
-                "sLengthMenu":     "Mostrar _MENU_ registros",
-                "sZeroRecords":    "No se encontraron resultados",
-                "sEmptyTable":     "Ningún dato disponible en esta tabla",
-                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix":    "",
-                "sSearch":         "Buscar:",
-                "sUrl":            "",
-                "sInfoThousands":  ",",
-                "sLoadingRecords": "Cargando...",
-                "oPaginate": {
-                    "sFirst":    "Primero",
-                    "sLast":     "Último",
-                    "sNext":     "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "oAria": {
-                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                }
-            },
-        });  
+            "oAria": {
+                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        },
+    });  
 
 });
 
@@ -172,5 +172,21 @@ function est_ina(lug_id){
     });
 }
 
+function inscritos(lug_id){
+    console.log(lug_id);
+    window.open('detalle_lugar.php?ID='+ lug_id +'');
+    /* mostrar_inscritos(lug_id); */
+ 
+}
+
+function mostrar_inscritos(lug_id){
+    console.log(lug_id);
+    /* const params = new URLSearchParams(window.location.search);
+    const lug_id = params.get('ID'); */
+    $.post("/Voluntariado/controller/lugares.php?opc=mostrar_lugares_usuario",{lug_id:lug_id},function (data){
+        $('#inscritos_data').DataTable().ajax.reload();
+    }); 
+}
+   
 
 init();

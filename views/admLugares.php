@@ -65,7 +65,7 @@ if(isset($_SESSION["usu_id"])){
                                 <th>Lugar</th>
                                 <th>Fecha de inicio</th>
                                 <th>Fecha de terminación</th>
-                                <th>Supervisor</th>
+                                <!-- <th>Supervisor</th> -->
                                 <th>Estado</th>
                                 <th></th>
                                 <th></th>

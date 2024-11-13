@@ -41,7 +41,7 @@ function guardaryeditar(e){
             formData.append("files[]", $('#fileElem')[0].files[i]);
         }
         $.ajax({
-            url: "/Aspirantes/controller/ticket.php?opc=insert",
+            url: "/Voluntariado/controller/ticket.php?opc=insert",
             type: "POST",
             data: formData,
             contentType: false,

@@ -134,12 +134,6 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="admTikets.php" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>Seguimientos</p>
-        </a>
-    </li>
-    <li class="nav-item">
         <a href="admNuevoTikets.php" class="nav-link">
             <i class="nav-icon fas fa-plus"></i>
             <p class="text">Crear Seguimiento</p>

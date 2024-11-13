@@ -150,7 +150,6 @@
                     $output["lug_descrip"] = $row["lug_descrip"];
                     $output["lug_fecini"] = $row["lug_fecini"];
                     $output["lug_fecfin"] = $row["lug_fecfin"];
-                    $output["lug_img"] = $row["lug_img"];
                     $output["usu_id"] = $row["usu_id"];
                     $output["usu_nom"] = $row["usu_nom"];
                     $output["usu_ape"] = $row["usu_ape"];

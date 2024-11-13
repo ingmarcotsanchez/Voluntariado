@@ -190,6 +190,7 @@ function info(lug_id){
 }
 
 function inscribir(lug_id){
+    console.log(lug_id);
     Swal.fire({
         title: 'Alerta!',
         text: 'Desea inscribirse en este espacio de voluntariado?',

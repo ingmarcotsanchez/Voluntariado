@@ -48,7 +48,7 @@ $(document).ready(function(){
                 'pdfHtml5'
                 ],
         "ajax":{
-            url: '/Aspirantes/controller/documento.php?opc=listar',
+            url: '/Voluntariado/controller/documento.php?opc=listar',
             type : "post",
             data : {tick_id:tick_id},
             dataType : "json",
@@ -116,7 +116,7 @@ $(document).on("click","#btnEnviarTicket", function(){
             confirmButtonText: 'Aceptar'
         })
     }else{
-        $.post("/Aspirantes/controller/ticket.php?opc=insertdetalle", { tick_id:tick_id,usu_id:usu_id,dtick_descrip:dtick_descrip}, function (data) {
+        $.post("/Voluntariado/controller/ticket.php?opc=insertdetalle", { tick_id:tick_id,usu_id:usu_id,dtick_descrip:dtick_descrip}, function (data) {
             listardetalle(tick_id);
             $('#dtick_descrip').summernote('reset');
             Swal.fire({
@@ -142,11 +142,11 @@ $(document).on("click","#btnCerrarTicket", function(){
         if (result.isConfirmed) {
             var tick_id = getUrlParameter('ID');
             var usu_id = $('#usu_idx').val();
-            $.post("/Aspirantes/controller/ticket.php?opc=update", { tick_id : tick_id,usu_id : usu_id }, function (data) {
+            $.post("/Voluntariado/controller/ticket.php?opc=update", { tick_id : tick_id,usu_id : usu_id }, function (data) {
 
             }); 
 
-             $.post("/Aspirantes/controller/email.php?opc=ticket_cerrado", {tick_id : tick_id}, function (data) {
+             $.post("/Voluntariado/controller/email.php?opc=ticket_cerrado", {tick_id : tick_id}, function (data) {
 
             });
 
@@ -164,12 +164,12 @@ $(document).on("click","#btnCerrarTicket", function(){
 });
 
 function listardetalle(tick_id){
-    $.post("/Aspirantes/controller/ticket.php?opc=listardetalle", { tick_id : tick_id }, function (data) {
+    $.post("/Voluntariado/controller/ticket.php?opc=listardetalle", { tick_id : tick_id }, function (data) {
         $('#Detalle_ticket').html(data);
     });
      
 
-    $.post("/Aspirantes/controller/ticket.php?opc=mostrar", { tick_id : tick_id }, function (data) {
+    $.post("/Voluntariado/controller/ticket.php?opc=mostrar", { tick_id : tick_id }, function (data) {
         data = JSON.parse(data);
         console.log(data);
         $('#id_ticket').html(data.tick_id);

@@ -53,10 +53,9 @@
                 $sub_array = array();
                 $sub_array[] = $row["area_nom"];
                 $sub_array[] = $row["lug_nom"];
-                /* $sub_array[] = '<a href="'.$row["lug_img"].'" target="_blank">'.strtoupper($row["lug_nom"]).'</a>'; */
                 $sub_array[] = $row["lug_fecini"];
                 $sub_array[] = $row["lug_fecfin"];
-                $sub_array[] = $row["ext_nom"] ." ". $row["ext_ape"];
+                //$sub_array[] = $row["ext_nom"] ." ". $row["ext_ape"];
                 if($row["est"] == '1'){
                     $sub_array[] = "<button type='button' onClick='est_ina(".$row["lug_id"].");' class='btn btn-success btn-sm'>Activo</button>";
                 }else{
@@ -90,7 +89,6 @@
                 $sub_array = array();
                 $sub_array[] = $row["area_nom"];
                 $sub_array[] = $row["lug_nom"];
-                /* $sub_array[] = '<a href="'.$row["lug_img"].'" target="_blank">'.strtoupper($row["lug_nom"]).'</a>'; */
                 $sub_array[] = $row["lug_fecini"];
                 $sub_array[] = $row["lug_fecfin"];
                 if($row["est"] == '1'){
@@ -101,7 +99,7 @@
                 
                 $sub_array[] = '<button type="button" onClick="editar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-warning btn-icon btn-sm"><div><i class="fa fa-edit"></i></div></button>';
                 $sub_array[] = '<button disabled type="button" onClick="eliminar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-danger btn-icon btn-sm"><div><i class="fa fa-trash"></i></div></button>';
-                $sub_array[] = '<button type="button" onClick="inscribirx('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-success btn-icon btn-sm"><div><i class="fa fa-users"></i></div></button>';
+                $sub_array[] = '<button type="button" onClick="inscritos('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-success btn-icon btn-sm"><div><i class="fa fa-users"></i></div></button>';
                 
                 
                 $data[] = $sub_array;
@@ -132,9 +130,39 @@
             $usu_id = $_SESSION['usu_id'];
             /*TODO: Registrar tantos usuarios vengan de la vista */
             $lugares->insert_lugares_usuario($_POST["lug_id"],$usu_id);
+            break;
+        case "mostrar_lugares_usuario":
+            $datos=$lugares->get_lugares_usuario($_POST["lug_id"]);
+            $data= Array();
+            foreach($datos as $row){
+                $sub_array = array();
+                $sub_array[] = $row["usu_nom"] ." ". $row["usu_ape"];
+                $sub_array[] = $row["fech_crea"];
+                 if($row["est"] == '1'){
+                    $sub_array[] = "<button type='button' onClick='est_ina(".$row["lug_id"].");' class='btn btn-success btn-sm'>Activo</button>";
+                }else{
+                    $sub_array[] = "<button type='button' onClick='est_act(".$row["lug_id"].");' class='btn btn-danger btn-sm'>Inactivo</button>";
+                }
+                /*
+                if($usu_rol == 'C'){
+                    $sub_array[] = '<button type="button" onClick="editar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-warning btn-icon btn-sm"><div><i class="fa fa-edit"></i></div></button>';
+                    $sub_array[] = '<button type="button" onClick="eliminar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-danger btn-icon btn-sm"><div><i class="fa fa-trash"></i></div></button>';                
+                    $sub_array[] = '<button disabled type="button" onClick="inscribirx('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-success btn-icon btn-sm"><div><i class="fa fa-users"></i></div></button>';
+                }else{
+                    $sub_array[] = '<button disabled type="button" onClick="editar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-warning btn-icon btn-sm"><div><i class="fa fa-edit"></i></div></button>';
+                    $sub_array[] = '<button type="button" onClick="info('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-dark btn-icon btn-sm"><div><i class="fa fa-eye"></i></div></button>';
+                    $sub_array[] = '<button type="button" onClick="inscribir('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-success btn-icon btn-sm"><div><i class="fa fa-user"></i></div></button>';
+                } */
                 
-         
-        
+                $data[] = $sub_array;
+            }
+
+            $results = array(
+                "sEcho"=>1,
+                "iTotalRecords"=>count($data),
+                "iTotalDisplayRecords"=>count($data),
+                "aaData"=>$data);
+            echo json_encode($results);
             break;
 
         case "generar_qr":

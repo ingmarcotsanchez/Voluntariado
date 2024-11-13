@@ -19,7 +19,8 @@
         public function insert_Mislugares($area_id,$lug_nom,$lug_descrip,$lug_fecini,$lug_fecfin,$ext_id){
             $conectar= parent::conexion();
             parent::set_names();
-            $sql="INSERT INTO lugares (lug_id, area_id, lug_nom, lug_descrip, lug_fecini, lug_fecfin, ext_id, fech_crea, est) VALUES (NULL,?,?,?,?,?,?, now(),'1');";
+            $sql="INSERT INTO lugares (lug_id, area_id, lug_nom, lug_descrip, lug_fecini, lug_fecfin, ext_id, fech_crea, est) 
+                                 VALUES (NULL,?,?,?,?,?,?, now(),'1');";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1, $area_id);
             $sql->bindValue(2, $lug_nom);
@@ -111,9 +112,9 @@
                 externos.ext_telf,
                 lugares.est
                 FROM lugares
-                INNER JOIN areas on lugares.area_id = areas.area_id
-                INNER JOIN externos on lugares.ext_id = externos.ext_id
-                WHERE lugares.est = 1";
+                LEFT JOIN areas on lugares.area_id = areas.area_id
+                LEFT JOIN externos on lugares.ext_id = externos.ext_id
+                /* WHERE lugares.est = 1 */";
             $sql=$conectar->prepare($sql);
             
             $sql->execute();
@@ -178,7 +179,15 @@
             
         }
 
-        
+        public function get_lugares_usuario($lug_id){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="SELECT * FROM lugares_usuarios WHERE lug_id = ?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $lug_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
 
         
     }

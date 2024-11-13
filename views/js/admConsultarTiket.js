@@ -9,10 +9,9 @@ function init(){
 }
 
 $(document).ready(function(){
-//console.log(usu_id);
    
     /* TODO:LLenar Combo usuario asignar */
-    $.post("/Aspirantes/controller/usuario.php?opc=combo", function (data) {
+    $.post("/Voluntariado/controller/usuario.php?opc=combo", function (data) {
         $('#usu_asig').html(data);
     });
     if (rol_id=="ASPI"){ 
@@ -29,7 +28,7 @@ $(document).ready(function(){
                     'pdfHtml5'
                     ],
             "ajax":{
-                url: '/Aspirantes/controller/ticket.php?opc=listar_x_usu',
+                url: '/Voluntariado/controller/ticket.php?opc=listar_x_usu',
                 type : "post",
                 dataType : "json",	
                 data:{ usu_id : usu_id },						
@@ -81,7 +80,7 @@ $(document).ready(function(){
                     'pdfHtml5',
                     ],
             "ajax":{
-                url: '/Aspirantes/controller/ticket.php?opc=listar',
+                url: '/Voluntariado/controller/ticket.php?opc=listar',
                 type : "post",
                  dataType : "json",						
                 error: function(e){
