@@ -92,7 +92,7 @@
     </li>
     <li class="nav-item">
         <a href="admConsultarTikets.php" class="nav-link">
-            <i class="nav-icon fas fa-search text-light"></i>
+            <i class="nav-icon fas fa-search"></i>
             <p class="text">Consultar Seguimiento</p>
         </a>
     </li>
@@ -141,13 +141,13 @@
     </li>
     <li class="nav-item">
         <a href="admNuevoTikets.php" class="nav-link">
-            <i class="nav-icon fas fa-plus text-light"></i>
+            <i class="nav-icon fas fa-plus"></i>
             <p class="text">Crear Seguimiento</p>
         </a>
     </li>
     <li class="nav-item">
         <a href="admConsultarTikets.php" class="nav-link">
-            <i class="nav-icon fas fa-search text-light"></i>
+            <i class="nav-icon fas fa-search"></i>
             <p class="text">Consultar Seguimiento</p>
         </a>
     </li>

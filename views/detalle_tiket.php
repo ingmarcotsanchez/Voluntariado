@@ -1,32 +1,34 @@
 <?php
-define( "BASE_URL", "/Aspirantes/views/");
-define("BASE_PATH","/Aspirantes");
-/* Llamamos al archivo de conexion.php */
-require_once("../config/conexion.php");                            
+$titulo="Consultar los seguimientos";
+define("URL","/Voluntariado/views/");
+require_once("../config/conexion.php");
 if(isset($_SESSION["usu_id"])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <?php
-    include("modulos/head.php");
-  ?>
-  <title>Aspirantes | Detalle</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Voluntariado</title>
+    <?php require_once("modulos/head.php"); ?>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
     <div class="wrapper">
-        <!-- Header -->
-        <?php
-            include("modulos/header.php");
-        ?>
-        <!-- /.Header -->
-
-        <!-- Menú -->
-        <?php
-            include("modulos/menu.php");
-        ?>
-        <!-- /.Menú -->
+        <?php require_once("modulos/header.php");?>
+        <aside class="main-sidebar sidebar-light-primary elevation-4">
+            <a href="#" class="brand-link">
+            <img src="../public/img/logo.png" alt="Logo UDEC" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">Voluntariado</span>
+            </a>
+            <div class="sidebar">
+            <input type="hidden" id="usu_idx" value="<?php echo $_SESSION["usu_id"]; ?>">
+            <input type="hidden" id="rol_idx" value="<?php echo $_SESSION["usu_rol"]; ?>">
+            <nav class="mt-2">
+                <?php require_once("modulos/menu.php");?>
+            </nav>
+            </div>
+        </aside>
         <div class="content-wrapper">
             <section class="content-header">
                 <div class="container-fluid">
@@ -38,7 +40,7 @@ if(isset($_SESSION["usu_id"])){
                 <div class="container-fluid">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Detalle Ticket: ID- <strong id="id_ticket"></strong> </h3>  <span class="float-right ml-2" id="Estado"></span><span class="btn btn-light btn-sm float-right" id="Fecha_creacion"></span>
+                            <h3 class="card-title">Detalle Seguimiento: ID- <strong id="id_ticket"></strong> </h3>  <span class="float-right ml-2" id="Estado"></span><span class="btn btn-light btn-sm float-right" id="Fecha_creacion"></span>
 
                         </div>
                        
@@ -115,9 +117,7 @@ if(isset($_SESSION["usu_id"])){
                 </div>
             </section>
         </div>
-        <?php
-            include("modulos/footer.php");
-        ?>
+        
     </div>
     <!-- /.Site warapper -->
     <?php
