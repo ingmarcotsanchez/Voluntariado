@@ -16,6 +16,21 @@
             return $resultado=$sql->fetchAll();
         }
 
+        public function insert_Mislugares($area_id,$lug_nom,$lug_descrip,$lug_fecini,$lug_fecfin,$ext_id){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="INSERT INTO lugares (lug_id, area_id, lug_nom, lug_descrip, lug_fecini, lug_fecfin, ext_id, fech_crea, est) VALUES (NULL,?,?,?,?,?,?, now(),'1');";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $area_id);
+            $sql->bindValue(2, $lug_nom);
+            $sql->bindValue(3, $lug_descrip);
+            $sql->bindValue(5, $lug_fecfin);
+            $sql->bindValue(4, $lug_fecini);
+            $sql->bindValue(6, $ext_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+
         public function update_lugares($lug_id,$area_id,$lug_nom,$lug_descrip,$lug_fecini,$lug_fecfin,$ext_id){
             $conectar= parent::conexion();
             parent::set_names();
@@ -37,6 +52,29 @@
             $sql->bindValue(4, $lug_fecini);
             $sql->bindValue(6, $ext_id);
             $sql->bindValue(7, $lug_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+        public function update_Mislugares($lug_id,$area_id,$lug_nom,$lug_descrip,$lug_fecini,$lug_fecfin){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="UPDATE lugares
+                SET
+                    area_id =?,
+                    lug_nom = ?,
+                    lug_descrip = ?,
+                    lug_fecini = ?,
+                    lug_fecfin = ?
+                    
+                WHERE
+                    lug_id = ?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $area_id);
+            $sql->bindValue(2, $lug_nom);
+            $sql->bindValue(3, $lug_descrip);
+            $sql->bindValue(5, $lug_fecfin);
+            $sql->bindValue(4, $lug_fecini);
+            $sql->bindValue(6, $lug_id);
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
@@ -77,6 +115,28 @@
                 INNER JOIN externos on lugares.ext_id = externos.ext_id
                 WHERE lugares.est = 1";
             $sql=$conectar->prepare($sql);
+            
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+        public function get_lugaresxRol($ext_id){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="SELECT
+                lugares.lug_id,
+                lugares.lug_nom,
+                lugares.lug_descrip,
+                lugares.lug_fecini,
+                lugares.lug_fecfin,
+                lugares.area_id,
+                areas.area_nom,
+                lugares.ext_id,
+                lugares.est
+                FROM lugares
+                INNER JOIN areas on lugares.area_id = areas.area_id
+                WHERE lugares.est = 1 AND lugares.ext_id=?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $ext_id);
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }

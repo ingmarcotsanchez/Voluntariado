@@ -14,7 +14,7 @@ function guardaryeditar(e){
     var formData = new FormData($("#lugares_form")[0]);
     //console.log(formData);
     $.ajax({
-        url: "/Voluntariado/controller/lugares.php?opc=guardaryeditar",
+        url: "/Voluntariado/controller/lugares.php?opc=guardaryeditar2",
         type: "POST",
         data: formData,
         contentType: false,
@@ -23,7 +23,7 @@ function guardaryeditar(e){
         success: function(data){
             console.log(data);
             $('#lugares_data').DataTable().ajax.reload();
-            $('#modalcrearLugares').modal('hide');
+            $('#modalcrearMiLugar').modal('hide');
 
             Swal.fire({
                 title: 'Correcto!',
@@ -37,17 +37,12 @@ function guardaryeditar(e){
 
 $(document).ready(function(){
     $('#area_id').select2({
-        dropdownParent: $('#modalcrearLugar')
-    });
-
-    $('#ext_id').select2({
-        dropdownParent: $('#modalcrearLugar')
+        dropdownParent: $('#modalcrearMiLugar')
     });
 
     combo_area();
 
-    combo_supervisor();
-    if(rol_id == "EX"){
+
         $('#lugares_data').DataTable({
             "aProcessing": true,
             "aServerSide": true,
@@ -90,50 +85,7 @@ $(document).ready(function(){
                 }
             },
         });  
-    }else{
-        $('#lugares_data').DataTable({
-            "aProcessing": true,
-            "aServerSide": true,
-            dom: 'Bfrtip',
-            buttons: [
-                'excelHtml5',
-                'csvHtml5',
-            ],
-            "ajax":{
-                url:"/Voluntariado/controller/lugares.php?opc=listar",
-                type:"post"
-            },
-            "bDestroy": true,
-            "responsive": true,
-            "bInfo":true,
-            "iDisplayLength": 15,
-            "order": [[ 0, "desc" ]],
-            "language": {
-                "sProcessing":     "Procesando...",
-                "sLengthMenu":     "Mostrar _MENU_ registros",
-                "sZeroRecords":    "No se encontraron resultados",
-                "sEmptyTable":     "Ningún dato disponible en esta tabla",
-                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix":    "",
-                "sSearch":         "Buscar:",
-                "sUrl":            "",
-                "sInfoThousands":  ",",
-                "sLoadingRecords": "Cargando...",
-                "oPaginate": {
-                    "sFirst":    "Primero",
-                    "sLast":     "Último",
-                    "sNext":     "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "oAria": {
-                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                }
-            },
-        });
-    }
+
 });
 
 function nuevo(){
@@ -142,18 +94,12 @@ function nuevo(){
  /*    combo_area();
 
     combo_supervisor(); */
-    $('#modalcrearLugar').modal('show');
+    $('#modalcrearMiLugar').modal('show');
 }
 
 function combo_area(){
     $.post("/Voluntariado/controller/area.php?opc=combo", function (data) {
         $('#area_id').html(data);
-    });
-}
-
-function combo_supervisor(){
-    $.post("/Voluntariado/controller/externo.php?opc=combo", function (data) {
-        $('#ext_id').html(data);
     });
 }
 
@@ -167,10 +113,9 @@ function editar(lug_id){
         $('#lug_descrip').val(data.lug_descrip);
         $('#lug_fecini').val(data.lug_fecini);
         $('#lug_fecfin').val(data.lug_fecfin);
-        $('#ext_id').val(data.ext_id).trigger('change');
     });
     $('#titulo_modal').html('Editar lugares');
-    $('#modalcrearLugar').modal('show');
+    $('#modalcrearMiLugar').modal('show');
 }
 
 function info(lug_id){
@@ -189,28 +134,6 @@ function info(lug_id){
     $('#modalcrearLugarInfo').modal('show');
 }
 
-function inscribir(lug_id){
-    Swal.fire({
-        title: 'Alerta!',
-        text: 'Desea inscribirse en este espacio de voluntariado?',
-        icon: 'alert',
-        showCancelButton: true,
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar',
-    }).then((result)=>{
-        if(result.value){
-            $.post("/Voluntariado/controller/lugares.php?opc=insert_lugares_usuario",{lug_id:lug_id},function (data){
-                $('#usuario_data').DataTable().ajax.reload();
-                Swal.fire({
-                    title: 'Correcto!',
-                    text: 'Se Registro de forma correcta el usuario',
-                    icon: 'success',
-                    confirmButtonText: 'Aceptar'
-                })
-            }); 
-        }
-    });
-}
 
 function eliminar(lug_id){
     Swal.fire({

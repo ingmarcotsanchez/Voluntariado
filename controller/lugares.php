@@ -6,6 +6,7 @@
     /*TODO: Inicializando Clase */
     $lugares = new Lugares();
     $usu_rol = $_SESSION["usu_rol"];
+    $ext_id = $_SESSION["usu_id"];
     /*TODO: Opcion de solicitud de controller */
     switch($_GET["opc"]){
         /*TODO: Guardar y editar cuando se tenga el ID */
@@ -14,6 +15,13 @@
                 $lugares->insert_lugares($_POST["area_id"],$_POST["lug_nom"],$_POST["lug_descrip"],$_POST["lug_fecini"],$_POST["lug_fecfin"],$_POST["ext_id"]);
             }else{
                 $lugares->update_lugares($_POST["lug_id"],$_POST["area_id"],$_POST["lug_nom"],$_POST["lug_descrip"],$_POST["lug_fecini"],$_POST["lug_fecfin"],$_POST["ext_id"]);
+            }
+            break;
+        case "guardaryeditar2":
+            if(empty($_POST["lug_id"])){
+                $lugares->insert_Mislugares($_POST["area_id"],$_POST["lug_nom"],$_POST["lug_descrip"],$_POST["lug_fecini"],$_POST["lug_fecfin"],$ext_id);
+            }else{
+                $lugares->update_Mislugares($_POST["lug_id"],$_POST["area_id"],$_POST["lug_nom"],$_POST["lug_descrip"],$_POST["lug_fecini"],$_POST["lug_fecfin"]);
             }
             break;
         /*TODO: Creando Json segun el ID */
@@ -57,12 +65,44 @@
                 if($usu_rol == 'C'){
                     $sub_array[] = '<button type="button" onClick="editar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-warning btn-icon btn-sm"><div><i class="fa fa-edit"></i></div></button>';
                     $sub_array[] = '<button type="button" onClick="eliminar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-danger btn-icon btn-sm"><div><i class="fa fa-trash"></i></div></button>';                
-                    $sub_array[] = "";
+                    $sub_array[] = '<button disabled type="button" onClick="inscribirx('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-success btn-icon btn-sm"><div><i class="fa fa-users"></i></div></button>';
                 }else{
-                    $sub_array[] = "";
+                    $sub_array[] = '<button disabled type="button" onClick="editar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-warning btn-icon btn-sm"><div><i class="fa fa-edit"></i></div></button>';
                     $sub_array[] = '<button type="button" onClick="info('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-dark btn-icon btn-sm"><div><i class="fa fa-eye"></i></div></button>';
                     $sub_array[] = '<button type="button" onClick="inscribir('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-success btn-icon btn-sm"><div><i class="fa fa-user"></i></div></button>';
                 }
+                
+                $data[] = $sub_array;
+            }
+
+            $results = array(
+                "sEcho"=>1,
+                "iTotalRecords"=>count($data),
+                "iTotalDisplayRecords"=>count($data),
+                "aaData"=>$data);
+            echo json_encode($results);
+            break;
+        case "listarxRol":
+            $usu_id=$_SESSION["usu_id"];
+            $datos=$lugares->get_lugaresxRol($usu_id);
+            $data= Array();
+            foreach($datos as $row){
+                $sub_array = array();
+                $sub_array[] = $row["area_nom"];
+                $sub_array[] = $row["lug_nom"];
+                /* $sub_array[] = '<a href="'.$row["lug_img"].'" target="_blank">'.strtoupper($row["lug_nom"]).'</a>'; */
+                $sub_array[] = $row["lug_fecini"];
+                $sub_array[] = $row["lug_fecfin"];
+                if($row["est"] == '1'){
+                    $sub_array[] = "<button type='button' onClick='est_ina(".$row["lug_id"].");' class='btn btn-success btn-sm'>Activo</button>";
+                }else{
+                    $sub_array[] = "<button type='button' onClick='est_act(".$row["lug_id"].");' class='btn btn-danger btn-sm'>Inactivo</button>";
+                }
+                
+                $sub_array[] = '<button type="button" onClick="editar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-warning btn-icon btn-sm"><div><i class="fa fa-edit"></i></div></button>';
+                $sub_array[] = '<button disabled type="button" onClick="eliminar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-danger btn-icon btn-sm"><div><i class="fa fa-trash"></i></div></button>';
+                $sub_array[] = '<button type="button" onClick="inscribirx('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-success btn-icon btn-sm"><div><i class="fa fa-users"></i></div></button>';
+                
                 
                 $data[] = $sub_array;
             }
