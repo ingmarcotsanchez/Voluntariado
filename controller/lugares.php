@@ -64,7 +64,7 @@
                 if($usu_rol == 'C'){
                     $sub_array[] = '<button type="button" onClick="editar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-warning btn-icon btn-sm"><div><i class="fa fa-edit"></i></div></button>';
                     $sub_array[] = '<button type="button" onClick="eliminar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-danger btn-icon btn-sm"><div><i class="fa fa-trash"></i></div></button>';                
-                    $sub_array[] = '<button disabled type="button" onClick="inscribirx('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-success btn-icon btn-sm"><div><i class="fa fa-users"></i></div></button>';
+                    $sub_array[] = '<button disabled type="button" onClick="inscribir('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-success btn-icon btn-sm"><div><i class="fa fa-users"></i></div></button>';
                 }else{
                     $sub_array[] = '<button disabled type="button" onClick="editar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-warning btn-icon btn-sm"><div><i class="fa fa-edit"></i></div></button>';
                     $sub_array[] = '<button type="button" onClick="info('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-dark btn-icon btn-sm"><div><i class="fa fa-eye"></i></div></button>';

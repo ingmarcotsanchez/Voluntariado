@@ -177,15 +177,11 @@ function info(lug_id){
     $.post("/Voluntariado/controller/lugares.php?opc=mostrar",{lug_id:lug_id},function (data){
         data = JSON.parse(data);
         console.log(data);
-       /*  $('#lug_id').val(data.lug_id);
-        $('#area_id').val(data.area_id).trigger('change');
-        $('#lug_nom').val(data.lug_nom); */
+        $('#lug_id').val(data.lug_id);
+        
         $('#lug_descrip').val(data.lug_descrip);
-        /* $('#lug_fecini').val(data.lug_fecini);
-        $('#lug_fecfin').val(data.lug_fecfin);
-        $('#ext_id').val(data.ext_id).trigger('change'); */
+    
     });
-    $('#titulo_modal').html('Información del lugar');
     $('#modalcrearLugarInfo').modal('show');
 }
 

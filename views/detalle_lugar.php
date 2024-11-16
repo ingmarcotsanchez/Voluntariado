@@ -2,6 +2,9 @@
 $titulo="Consultar los voluntarios inscritos";
 define("URL","/Voluntariado/views/");
 require_once("../config/conexion.php");
+require_once("../models/Lugares.php");
+$voluntario = new Lugares();
+$vol = $voluntario->get_lugares_usuario_join($_GET['ID']);
 if(isset($_SESSION["usu_id"])){
 ?>
 <!DOCTYPE html>
@@ -55,7 +58,21 @@ if(isset($_SESSION["usu_id"])){
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+                                <?php for($i=0;$i<sizeof($vol);$i++): ?>
+                                    <tr>
+                                        <td><?php echo $vol[$i]["usu_nom"]." ".$vol[$i]["usu_ape"]; ?></td>
+                                        <td><?php echo $vol[$i]["fech_crea"]; ?></td>
+                                        <td>
+                                            <?php 
+                                             if($vol[$i]["est"] == 1){
+                                                echo "<strong class='text-success'>Terminado</strong>"; 
+                                             }else{
+                                                echo "<strong class='tex-dark'>En proceso</strong>"; 
+                                             }
+                                            ?>
+                                        </td>
+                                    </tr>
+                                <?php endfor; ?>
                                 </tbody>
                             </table>
                         </div>

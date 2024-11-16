@@ -188,6 +188,25 @@
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
+        public function get_lugares_usuario_join($lug_id){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="SELECT 
+            lugares_usuarios.lugd_id,
+            lugares_usuarios.lug_id,
+            lugares_usuarios.usu_id,
+            usuarios.usu_nom,
+            usuarios.usu_ape,
+            lugares_usuarios.fech_crea,
+            lugares_usuarios.est
+            FROM lugares_usuarios 
+            INNER JOIN usuarios on lugares_usuarios.usu_id = usuarios.usu_id
+            WHERE lug_id = ?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $lug_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
 
         
     }
