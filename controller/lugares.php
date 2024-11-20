@@ -143,16 +143,7 @@
                 }else{
                     $sub_array[] = "<button type='button' onClick='est_act(".$row["lug_id"].");' class='btn btn-danger btn-sm'>Inactivo</button>";
                 }
-                /*
-                if($usu_rol == 'C'){
-                    $sub_array[] = '<button type="button" onClick="editar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-warning btn-icon btn-sm"><div><i class="fa fa-edit"></i></div></button>';
-                    $sub_array[] = '<button type="button" onClick="eliminar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-danger btn-icon btn-sm"><div><i class="fa fa-trash"></i></div></button>';                
-                    $sub_array[] = '<button disabled type="button" onClick="inscribirx('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-success btn-icon btn-sm"><div><i class="fa fa-users"></i></div></button>';
-                }else{
-                    $sub_array[] = '<button disabled type="button" onClick="editar('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-warning btn-icon btn-sm"><div><i class="fa fa-edit"></i></div></button>';
-                    $sub_array[] = '<button type="button" onClick="info('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-dark btn-icon btn-sm"><div><i class="fa fa-eye"></i></div></button>';
-                    $sub_array[] = '<button type="button" onClick="inscribir('.$row["lug_id"].');"  id="'.$row["lug_id"].'" class="btn btn-outline-success btn-icon btn-sm"><div><i class="fa fa-user"></i></div></button>';
-                } */
+              
                 
                 $data[] = $sub_array;
             }
@@ -171,6 +162,13 @@
             //Segundo Parametro - Ruta donde se guardara el archivo
             QRcode::png(conectar::ruta()."views/certificado.php?lugd_id=".$_POST["lugd_id"],"../public/qr/".$_POST["lugd_id"].".png",'L',32,5);
             break;
+
+        case "terminado":
+            $lugares->update_estadoTerminado($_POST["lug_id"]);
+            break;
+        case "proceso":
+            $lugares->update_estadoProceso($_POST["lug_id"]);
+            break; 
 
     }
 ?>

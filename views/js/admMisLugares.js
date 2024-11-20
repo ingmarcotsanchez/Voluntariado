@@ -187,6 +187,19 @@ function mostrar_inscritos(lug_id){
         $('#inscritos_data').DataTable().ajax.reload();
     }); 
 }
+
+function est_ter(lug_id){
+    $.post("/Voluntariado/controller/lugares.php?opc=terminado",{lug_id:lug_id},function (data){
+        $('#inscritos_data').DataTable().ajax.reload();
+       // data = JSON.parse(data);
+    });
+}
+function est_pro(lug_id){
+    $.post("/Voluntariado/controller/lugares.php?opc=proceso",{lug_id:lug_id},function (data){
+        $('#inscritos_data').DataTable().ajax.reload();
+       // data = JSON.parse(data);
+    });
+}
    
 
 init();

@@ -208,6 +208,23 @@
             return $resultado=$sql->fetchAll();
         }
 
-        
+        public function update_estadoTerminado($lug_id){
+            $conectar = parent::Conexion();
+            parent::set_names();
+            $sql = "UPDATE lugares_usuarios SET est=1 WHERE lug_id = ?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1,$lug_id);
+            $sql->execute();
+            return $resultado = $sql->fetchAll();
+        }
+        public function update_estadoProceso($lug_id){
+            $conectar = parent::Conexion();
+            parent::set_names();
+            $sql = "UPDATE lugares_usuarios SET est=0 WHERE lug_id = ?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1,$lug_id);
+            $sql->execute();
+            return $resultado = $sql->fetchAll();
+        }
     }
 ?>

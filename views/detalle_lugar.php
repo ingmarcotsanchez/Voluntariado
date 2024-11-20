@@ -65,9 +65,9 @@ if(isset($_SESSION["usu_id"])){
                                         <td>
                                             <?php 
                                              if($vol[$i]["est"] == 1){
-                                                echo "<strong class='text-success'>Terminado</strong>"; 
+                                                echo "<button type='button' onClick='est_pro(".$vol[$i]["lug_id"].");' class='btn btn-success btn-sm'>Terminado</button>";
                                              }else{
-                                                echo "<strong class='tex-dark'>En proceso</strong>"; 
+                                                echo "<button type='button' onClick='est_ter(".$vol[$i]["lug_id"].");' class='btn btn-dark btn-sm'>En proceso</button>";
                                              }
                                             ?>
                                         </td>
