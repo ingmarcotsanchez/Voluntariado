@@ -12,9 +12,9 @@
         /*TODO: Guardar y editar cuando se tenga el ID */
         case "guardaryeditar":
             if(empty($_POST["lug_id"])){
-                $lugares->insert_lugares($_POST["area_id"],$_POST["lug_nom"],$_POST["lug_descrip"],$_POST["lug_fecini"],$_POST["lug_fecfin"],$_POST["ext_id"]);
+                $lugares->insert_lugares($_POST["area_id"],$_POST["lug_nom"],$_POST["lug_descrip"],$_POST["lug_fecini"],$_POST["lug_fecfin"],$_POST["usu_id"]);
             }else{
-                $lugares->update_lugares($_POST["lug_id"],$_POST["area_id"],$_POST["lug_nom"],$_POST["lug_descrip"],$_POST["lug_fecini"],$_POST["lug_fecfin"],$_POST["ext_id"]);
+                $lugares->update_lugares($_POST["lug_id"],$_POST["area_id"],$_POST["lug_nom"],$_POST["lug_descrip"],$_POST["lug_fecini"],$_POST["lug_fecfin"],$_POST["usu_id"]);
             }
             break;
         case "guardaryeditar2":
@@ -35,7 +35,7 @@
                     $output["lug_descrip"] = $row["lug_descrip"];
                     $output["lug_fecini"] = $row["lug_fecini"];
                     $output["lug_fecfin"] = $row["lug_fecfin"];
-                    $output["ext_id"] = $row["ext_id"];
+                    $output["usu_id"] = $row["usu_id"];
                 }
                 echo json_encode($output);
             }

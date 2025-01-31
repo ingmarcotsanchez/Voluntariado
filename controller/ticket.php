@@ -127,7 +127,7 @@
                 }else{
                     $sub_array[] = date("d/m/Y H:i:s", strtotime($row["fech_cierre"]));
                 }
-
+      
                 
                 $sub_array[] = '<button type="button" onClick="ver('.$row["tick_id"].');"  id="'.$row["tick_id"].'" class="btn btn-inline btn-primary btn-sm ladda-button"><i class="fa fa-eye"></i></button>';
                 
@@ -214,5 +214,9 @@
                 echo json_encode($output);
             }
             break;
+
+     /*    case "encuesta":
+            $ticket->insert_encuesta($_POST["tick_id"],$_POST["tick_estre"],$_POST["tick_coment"]);
+            break; */
     }
 ?>

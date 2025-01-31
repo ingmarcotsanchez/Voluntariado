@@ -153,7 +153,7 @@
         public function insert_usuarios($usu_nom,$usu_ape,$usu_correo,$usu_pass){
             $usuario=parent::Conexion();
             parent::set_names();
-            $sql="INSERT INTO usuarios(usu_id,usu_nom,usu_ape,usu_correo,usu_pass,fech_crea,estado)
+            $sql="INSERT INTO usuarios(usu_id,usu_nom,usu_ape,usu_correo,usu_pass,fech_crea,est)
                     VALUES(NULL,?,?,?,MD5(?),now(),1)";
             $sql=$usuario->prepare($sql);
             $sql->bindValue(1,$usu_nom);
@@ -446,4 +446,61 @@
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
+
+        public function usuario_externos(){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="SELECT * FROM usuarios where est=1 and usu_rol='EX'";
+            $sql=$conectar->prepare($sql);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+
+// funciones para el dashboard
+
+        public function total_voluntarios(){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="SELECT count(*) as total FROM usuarios WHERE usu_rol='ES' OR usu_rol='EX' OR usu_rol='GC' AND est=1";
+            $sql=$conectar->prepare($sql);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+
+        public function total_estudiantes(){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="SELECT count(*) as total FROM usuarios WHERE usu_rol='ES' AND est=1";
+            $sql=$conectar->prepare($sql);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+
+        public function total_externos(){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="SELECT count(*) as total FROM usuarios WHERE usu_rol='EX' AND est=1";
+            $sql=$conectar->prepare($sql);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+
+        public function total_gestores(){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="SELECT count(*) as total FROM usuarios WHERE usu_rol='GC' AND est=1";
+            $sql=$conectar->prepare($sql);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+
+        public function total_campos(){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="SELECT count(*) as total FROM lugares";
+            $sql=$conectar->prepare($sql);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+        
     }

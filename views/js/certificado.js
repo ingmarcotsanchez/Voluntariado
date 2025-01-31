@@ -3,7 +3,7 @@ var ctx = canvas.getContext('2d');
 
 /* Inicializamos la imagen */
 var image = new Image();
-image.src ='/Voluntariado/public/certificado.png';
+image.src ='/Voluntariado/public/certificado.jpg';
 ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 var imageqr = new Image();
 
@@ -19,18 +19,20 @@ $(document).ready(function(){
             var x = canvas.width / 2;
             ctx.fillText(data.usu_nom+' '+ data.usu_ape, x, 250);
 
-            ctx.font = '20px Arial';
-            ctx.fillText('El voluntariado en:', x, 350);
+            /* ctx.font = '20px Arial';
+            ctx.fillText('El voluntariado en:', x, 350); */
 
-            ctx.font = '18px Arial';
-            ctx.fillText(data.lug_descrip, x, 380);
+            /* ctx.font = '18px Arial';
+            ctx.fillText(data.lug_descrip, x, 380); */
             ctx.font = '30px Arial';
-            ctx.fillText(data.lug_nom, x, 410);
+            ctx.fillText(data.lug_nom, x, 380);
+            ctx.font = '18px Arial';
+            ctx.fillText(data.lug_descrip, x, 410);
 
             ctx.font = '20px Arial';
-            ctx.fillText(data.ext_nom+' '+ data.ext_ape, x, 480);
+            ctx.fillText(data.ext_nom+' '+ data.ext_ape, x, 470);
             ctx.font = '15px Arial';
-            ctx.fillText('Supervisor del lugar', x, 500);
+            ctx.fillText('Supervisor del lugar', x, 490);
 
             ctx.font = '15px Arial';
             ctx.fillText('Fecha de Inicio : '+data.lug_fecini+' / '+'Fecha de Finalización : '+data.lug_fecfin+'', x, 590);

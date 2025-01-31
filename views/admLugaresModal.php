@@ -49,7 +49,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="ext_id">Supervisor</label>
-                                <select class="form-control select2" style="width:100%" name="ext_id" id="ext_id" data-placeholder="Seleccione">
+                                <select class="form-control select2" style="width:100%" name="usu_id" id="usu_id" data-placeholder="Seleccione">
                                 
                                     <option label="Seleccione"></option>
 

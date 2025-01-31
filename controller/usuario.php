@@ -210,7 +210,7 @@
                 "aaData"=>$data);
             echo json_encode($results);
             break;
-        case "totalabierto";
+        case "totalabierto":
             $datos=$usuario->get_usuario_totalabierto_x_id($_POST["usu_id"]);  
             if(is_array($datos)==true and count($datos)>0){
                 foreach($datos as $row)
@@ -221,7 +221,7 @@
             }
             break;
 
-        case "totalcerrado";
+        case "totalcerrado":
             $datos=$usuario->get_usuario_totalcerrado_x_id($_POST["usu_id"]);  
             if(is_array($datos)==true and count($datos)>0){
                 foreach($datos as $row)
@@ -231,7 +231,7 @@
                 echo json_encode($output);
             }
             break;
-        case "combo";
+        case "combo":
             $datos = $usuario->usuario_x_rol();
             if(is_array($datos)==true and count($datos)>0){
                 $html.= "<option label='Seleccionar'></option>";
@@ -241,6 +241,70 @@
                     $html.= "<option value='".$row['usu_id']."'>".$row['usu_nom']." ".$row['usu_apep']." - ".$row['usu_rol']."</option>";
                 }
                 echo $html;
+            }
+            break;
+
+        case "externos":
+            $datos = $usuario->usuario_externos();
+            if(is_array($datos)==true and count($datos)>0){
+                $html.= "<option label='Seleccionar'></option>";
+                foreach($datos as $row)
+                {
+                    
+                    $html.= "<option value='".$row['usu_id']."'>".$row['usu_nom']." ".$row['usu_apep']."</option>";
+                }
+                echo $html;
+            }
+            break;
+
+        case "total_Voluntarios":
+            $datos=$usuarios->total_voluntarios();
+            if(is_array($datos)==true and count($datos)>0){
+                foreach($datos as $row)
+                {
+                    $output["total"] = $row["total"];
+                }
+                echo json_encode($output);
+            }
+            break;
+        case "total_Estudiantes":
+            $datos=$usuarios->total_estudiantes();
+            if(is_array($datos)==true and count($datos)>0){
+                foreach($datos as $row)
+                {
+                    $output["total"] = $row["total"];
+                }
+                echo json_encode($output);
+            }
+            break;
+        case "total_Gestores":
+            $datos=$usuarios->total_gestores();
+            if(is_array($datos)==true and count($datos)>0){
+                foreach($datos as $row)
+                {
+                    $output["total"] = $row["total"];
+                }
+                echo json_encode($output);
+            }
+            break;
+        case "total_Externos":
+            $datos=$usuarios->total_externos();
+            if(is_array($datos)==true and count($datos)>0){
+                foreach($datos as $row)
+                {
+                    $output["total"] = $row["total"];
+                }
+                echo json_encode($output);
+            }
+            break;
+        case "total_Campos":
+            $datos=$usuarios->total_campos();
+            if(is_array($datos)==true and count($datos)>0){
+                foreach($datos as $row)
+                {
+                    $output["total"] = $row["total"];
+                }
+                echo json_encode($output);
             }
             break;
 

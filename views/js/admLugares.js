@@ -40,13 +40,14 @@ $(document).ready(function(){
         dropdownParent: $('#modalcrearLugar')
     });
 
-    $('#ext_id').select2({
+    $('#usu_id').select2({
         dropdownParent: $('#modalcrearLugar')
     });
 
     combo_area();
 
     combo_supervisor();
+
     if(rol_id == "EX"){
         $('#lugares_data').DataTable({
             "aProcessing": true,
@@ -139,9 +140,7 @@ $(document).ready(function(){
 function nuevo(){
     $('#titulo_modal').html('Nuevo lugar');
     $('#lugares_form')[0].reset();
- /*    combo_area();
 
-    combo_supervisor(); */
     $('#modalcrearLugar').modal('show');
 }
 
@@ -152,8 +151,8 @@ function combo_area(){
 }
 
 function combo_supervisor(){
-    $.post("/Voluntariado/controller/externo.php?opc=combo", function (data) {
-        $('#ext_id').html(data);
+    $.post("/Voluntariado/controller/usuario.php?opc=externos", function (data) {
+        $('#usu_id').html(data);
     });
 }
 
@@ -167,7 +166,7 @@ function editar(lug_id){
         $('#lug_descrip').val(data.lug_descrip);
         $('#lug_fecini').val(data.lug_fecini);
         $('#lug_fecfin').val(data.lug_fecfin);
-        $('#ext_id').val(data.ext_id).trigger('change');
+        $('#usu_id').val(data.usu_id).trigger('change');
     });
     $('#titulo_modal').html('Editar lugares');
     $('#modalcrearLugar').modal('show');

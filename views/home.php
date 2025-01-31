@@ -6,10 +6,14 @@
   define("BASE_PATH","/Voluntariado");
   require_once("../config/conexion.php");
   require_once("../models/Usuarios.php");
-  /* $usuario = new Usuario(); */
-  /* $totalP = $usuario->total_programas(); */
- /*  var_dump($totalP);
-  $totalC = $usuario->total_centros(); */
+  $usuario = new Usuario();
+  $total = $usuario->total_voluntarios();
+  $cnt_estudiantes = $usuario->total_estudiantes();
+  (int)$tot_estudiantes = ((int)$cnt_estudiantes[0]["total"]/$total[0]["total"])*100;
+  $cnt_gestores = $usuario->total_gestores();
+  (int)$tot_gestores = ((int)$cnt_gestores[0]["total"]/$total[0]["total"])*100;
+  $cnt_externos = $usuario->total_externos();
+  (int)$tot_externos = ((int)$cnt_externos[0]["total"]/$total[0]["total"])*100;
   if(isset($_SESSION["usu_id"])){
 ?>
 <!DOCTYPE html>
@@ -20,6 +24,7 @@
   <title>Gestión Voluntariado</title>
   <?php require_once("modulos/head.php"); ?>
   <link rel="stylesheet" href="../public/plugins/chart.js/Chart.min.css">
+  <link rel="icon" href="/Voluntariado/public/img/favicon.png">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -70,28 +75,39 @@
             </div>
           </div>
           <?php if($_SESSION["usu_rol"] == "C"): ?>
-            <!-- <div class="col-12 col-sm-6 col-md-3">
-              <div class="info-box">
-                <span class="info-box-icon bg-primary elevation-1"><i class="fa fa-graduation-cap"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Programas</span>
-                  <span class="info-box-number">
-                    <span id="lbltotalProgramas"></span>
-                  </span>
-                </div>
-              </div>
-            </div> -->
-            <div class="col-12 col-sm-6 col-md-3">
-              <div class="info-box">
-                <span class="info-box-icon bg-primary elevation-1"><i class="fa fa-user"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Solicitudes</span>
-                  <span class="info-box-number">
-                    <span id="lbltotalRemisiones"></span>
-                  </span>
-                </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-primary elevation-1"><i class="fa fa-graduation-cap"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Campos</span>
+                <span class="info-box-number">
+                  <span id="lbltotalCampos"></span>
+                </span>
               </div>
             </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-users"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Voluntarios</span>
+                <span class="info-box-number">
+                  <span id="lbltotalVoluntarios"></span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-paper-plane"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Solicitudes</span>
+                <span class="info-box-number">
+                  <span id="lbltotalRemisiones"></span>
+                </span>
+              </div>
+            </div>
+          </div>
             
           <?php endif; ?>
           <?php if($_SESSION["usu_rol"] == "ES"): ?>
@@ -111,6 +127,51 @@
         </div>
         
       </div>
+      <?php if($_SESSION["usu_rol"] == "C"): ?>
+      <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+              <p class="text-center">
+                <strong>Detalle de Voluntarios</strong>
+              </p>
+              <div class="card-body p-4">
+
+                <!-- /.progress-group -->
+                <div class="progress-group">
+                  <span class="progress-text">Estudiantes</span>
+                  <span class="float-right" id="lbltotalEstudiantes"></span>
+                  <!--  $porcentaje = (((lbltotalEstudiantes * lbltotalActivos ) / 100) * 100);-->
+                  <div class="progress progress-sm">
+                    <div class="progress-bar bg-success" style="width:<?php echo $tot_estudiantes; ?>%"></div>
+                  </div>
+                </div>
+
+
+                <div class="progress-group">
+                  Gestores del conocimiento
+                  <span class="float-right" id="lbltotalGestores"></span>
+                  <div class="progress progress-sm">
+                    <div class="progress-bar bg-warning" style="width: <?php echo $tot_gestores; ?>%"></div>
+                  </div>
+                </div>
+
+                <div class="progress-group">
+                  Sector Externo
+                  <span class="float-right" id="lbltotalExternos"></span>
+                  <div class="progress progress-sm">
+                    <div class="progress-bar bg-info" style="width: <?php echo $tot_externos; ?>%"></div>
+                  </div>
+                </div>
+                <div class="progress-group">
+                  <strong>Total de Voluntarios
+                  <span class="float-right"><?php echo $total[0]["total"]; ?></span>
+                  </strong>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <?php endif; ?>
     </section>
     
   </div>

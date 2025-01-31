@@ -203,6 +203,24 @@
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
+
+        public function insert_encuesta($tick_id,$tick_estre,$tick_coment){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="UPDATE ticket 
+                SET	
+                    tick_estre = ?,
+                    tick_coment = ?
+                WHERE
+                    tick_id = ?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $tick_estre);
+            $sql->bindValue(2, $tick_coment);
+            $sql->bindValue(3, $tick_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+        
         
     }
 ?>

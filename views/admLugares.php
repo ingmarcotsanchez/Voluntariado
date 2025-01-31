@@ -55,9 +55,10 @@ if(isset($_SESSION["usu_id"])){
                     <h3 class="card-title">Lugares disponibles</h3>
                 </div>
                 <div class="card-body">
+                  <?php if($_SESSION["usu_rol"] != "ES"): ?>
                     <button type="button" class="btn btn-outline-primary mb-2" onclick="nuevo()">Crear Lugar</button>
                     <button type="button" class="btn btn-outline-secondary mb-2" id="btnplantilla">Cargar Planilla</button>
-                    
+                  <?php endif; ?>
                     <table id="lugares_data" class="table display responsive wrap">
                         <thead>
                             <tr>

@@ -24,6 +24,7 @@
                                 <input type="text" class="form-control" name="usu_ape" id="usu_ape" placeholder="Ingrese sus Apellidos">
                             </div>
                         </div>
+                        
                     </div>
                     <div class="row">
                         <div class="col-4">
